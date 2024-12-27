@@ -1,0 +1,12 @@
+<dokumenty>
+  <dokument lp="1">
+    <naglowek>
+      <kontrahent>1</kontrahent>
+    </naglowek>
+  </dokument>
+  <dokument lp="2">
+    <naglowek>
+      <kontrahent>2</kontrahent>
+    </naglowek>
+  </dokument>
+</dokumenty>
