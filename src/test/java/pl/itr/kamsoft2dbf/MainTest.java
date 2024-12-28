@@ -29,7 +29,7 @@ class MainTest {
     @Test
     void should_convert() {
         // given
-        var inputFile = "sample2.xml";
+        var inputFile = "sample2.XML";
         var outputFile = "fa121231.dbf";
         // when
         Main.main(new String[]{inputFile, outputFile});
