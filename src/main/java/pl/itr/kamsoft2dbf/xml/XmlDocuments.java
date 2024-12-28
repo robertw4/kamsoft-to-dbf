@@ -42,8 +42,8 @@ public class XmlDocuments {
         return new Documents(
                 documents
                         .stream()
-                        .map(d -> d.toDocument(cards.getCardMap()))
-                        .collect(toList())
+                        .map(xmlDocument -> xmlDocument.toDocument(cards.getCardMap()))
+                        .toList()
         );
     }
 

@@ -12,8 +12,8 @@ public enum Fields {
     NZWK(CHARACTER, 100),
     NIPK(CHARACTER, 15);
 
-    private DBFDataType type;
-    private Integer length;
+    private final DBFDataType type;
+    private final Integer length;
 
     Fields(DBFDataType type, Integer length) {
         this.type = type;
