@@ -1,12 +1,30 @@
 <dokumenty>
+  <kartoteki>
+    <kartoteka lp="1">
+      <nazwa1>NEUCA SPÓŁKA AKCYJNA</nazwa1>
+      <nip>8790017162</nip>
+    </kartoteka>
+    <kartoteka lp="2">
+      <nazwa1>POLSKA GRUPA FARMACEUTYCZNA S.A.</nazwa1>
+      <nip>527-264-39-21</nip>
+    </kartoteka>
+  </kartoteki>
   <dokument lp="1">
     <naglowek>
       <kontrahent>1</kontrahent>
+      <nr-dokumentu>100001</nr-dokumentu>
     </naglowek>
   </dokument>
   <dokument lp="2">
     <naglowek>
       <kontrahent>2</kontrahent>
+      <nr-dokumentu>100002</nr-dokumentu>
+    </naglowek>
+  </dokument>
+  <dokument lp="3">
+    <naglowek>
+      <nr-dokumentu>100003</nr-dokumentu>
+      <ss>Invalid</ss>
     </naglowek>
   </dokument>
 </dokumenty>
