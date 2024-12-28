@@ -20,10 +20,10 @@ public class XmlDocument {
         this.header = naglowek;
     }
 
-    public Document toDocument(Map<Integer, Card> cartMap) {
+    public Document toDocument(Map<Integer, Card> cardMap) {
         return Optional.ofNullable(header)
                 .map(Header::getContractor)
-                .map(cartMap::get)
+                .map(cardMap::get)
                 .map(d -> new Document(d.getName(), d.getVatId(), header.getDocNo()))
                 .orElse( new Document(header.getDocNo()));
     }

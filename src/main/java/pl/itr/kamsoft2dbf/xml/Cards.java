@@ -21,18 +21,18 @@ public class Cards {
         this.cards = null;
     }
 
-    public Cards(List<Card> carts) {
-        this.cards = carts;
+    public Cards(List<Card> cards) {
+        this.cards = cards;
     }
 
     @Override
     public String toString() {
-        return "Carts{" +
-                "carts=" + cards +
+        return "Cards{" +
+                "cards=" + cards +
                 '}';
     }
 
-    public Map<Integer, Card> getCartMap() {
+    public Map<Integer, Card> getCardMap() {
         return cards.stream().collect(Collectors.toMap(Card::getId, identity()));
     }
 }

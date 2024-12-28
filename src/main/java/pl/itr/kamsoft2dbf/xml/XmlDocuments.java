@@ -19,16 +19,16 @@ public class XmlDocuments {
     @JacksonXmlProperty(localName = "dokument")
     private final List<XmlDocument> documents;
     @JacksonXmlProperty(localName = "kartoteki")
-    private final Cards carts;
+    private final Cards cards;
 
     public XmlDocuments() {
         this.documents = null;
-        this.carts = null;
+        this.cards = null;
     }
 
-    public XmlDocuments(List<XmlDocument> documents, Cards carts) {
+    public XmlDocuments(List<XmlDocument> documents, Cards cards) {
         this.documents = documents;
-        this.carts = carts;
+        this.cards = cards;
     }
 
     public static Documents fromFile(String fileName) throws IOException {
@@ -38,12 +38,11 @@ public class XmlDocuments {
         return xmlMapper.readValue(file, XmlDocuments.class).toDocuments();
     }
 
-
     private Documents toDocuments() {
         return new Documents(
                 documents
                         .stream()
-                        .map(d -> d.toDocument(carts.getCartMap()))
+                        .map(d -> d.toDocument(cards.getCardMap()))
                         .collect(toList())
         );
     }
@@ -52,7 +51,7 @@ public class XmlDocuments {
     public String toString() {
         return "Documents{" +
                 "documents=" + documents +
-                ", carts=" + carts +
+                ", cards=" + cards +
                 '}';
     }
 }
