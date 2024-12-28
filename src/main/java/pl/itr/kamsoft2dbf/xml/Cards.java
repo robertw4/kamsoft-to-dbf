@@ -6,9 +6,9 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.toMap;
 
 @JacksonXmlRootElement(localName = "kartoteki")
 public class Cards {
@@ -33,6 +33,6 @@ public class Cards {
     }
 
     public Map<Integer, Card> getCardMap() {
-        return cards.stream().collect(Collectors.toMap(Card::getId, identity()));
+        return cards.stream().collect(toMap(Card::getId, identity()));
     }
 }
