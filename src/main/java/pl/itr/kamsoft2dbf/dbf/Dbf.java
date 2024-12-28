@@ -11,14 +11,15 @@ import java.io.FileOutputStream;
 import static com.linuxense.javadbf.DBFDataType.CHARACTER;
 
 public class Dbf {
+    private static final DBFField[] struct = {
+            new DBFField("NRDOK", CHARACTER, 20),
+            new DBFField("NZWK", CHARACTER, 100),
+            new DBFField("NIPK", CHARACTER, 15),
+    };
+
     public static void save(String fileName, Documents documents) throws FileNotFoundException {
         DBFWriter writer = new DBFWriter(new FileOutputStream(fileName));
-        DBFField[] fields = {
-                new DBFField("NRDOK", CHARACTER, 20),
-                new DBFField("NZWK", CHARACTER, 100),
-                new DBFField("NIPK", CHARACTER, 15),
-        };
-        writer.setFields(fields);
+        writer.setFields(struct);
         documents.getDocuments().forEach(document -> {
             writer.addRecord(toRecord(document));
         });
