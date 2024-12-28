@@ -1,8 +1,8 @@
-package pl.itr.xml;
+package pl.itr.kamsoft2dbf.xml;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import pl.itr.doc.Document;
+import pl.itr.kamsoft2dbf.doc.Document;
 
 import java.util.Map;
 import java.util.Optional;
@@ -20,9 +20,9 @@ public class XmlDocument {
         this.header = naglowek;
     }
 
-    public Document toDocument(Map<Integer, Cart> cartMap) {
+    public Document toDocument(Map<Integer, Card> cartMap) {
         return Optional.ofNullable(header)
-                .map(Header::getKontrahent)
+                .map(Header::getContractor)
                 .map(cartMap::get)
                 .map(d -> new Document(d.getName(), d.getVatId(), header.getDocNo()))
                 .orElse( new Document(header.getDocNo()));

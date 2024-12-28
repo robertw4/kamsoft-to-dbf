@@ -1,10 +1,10 @@
-package pl.itr.xml;
+package pl.itr.kamsoft2dbf.xml;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 @JacksonXmlRootElement(localName = "kartoteka")
-public class Cart {
+public class Card {
     @JacksonXmlProperty(localName = "lp", isAttribute = true)
     private final Integer id;
     @JacksonXmlProperty(localName = "nazwa1")
@@ -12,12 +12,12 @@ public class Cart {
     @JacksonXmlProperty(localName = "nip")
     private final String vatId;
 
-    public Cart() {
+    public Card() {
         this.id = null;
         this.name = null;
         this.vatId = null;
     }
-    public Cart(Integer id, String name, String vatId) {
+    public Card(Integer id, String name, String vatId) {
         this.id = id;
         this.name = name;
         this.vatId = vatId;
@@ -31,7 +31,7 @@ public class Cart {
 
     @Override
     public String toString() {
-        return "Cart{" +
+        return "Card{" +
                 "id='" + id  +
                 ", name='" + name + '\'' +
                 ", vatId='" + vatId + '\'' +

@@ -1,4 +1,4 @@
-package pl.itr.doc;
+package pl.itr.kamsoft2dbf.doc;
 
 import java.util.List;
 
@@ -7,6 +7,10 @@ public class Documents {
 
     public Documents(List<Document> documents) {
         this.documents = documents;
+    }
+
+    public List<Document> getDocuments() {
+        return documents;
     }
 
     @Override

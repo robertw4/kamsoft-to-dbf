@@ -1,4 +1,4 @@
-package pl.itr.xml;
+package pl.itr.kamsoft2dbf.xml;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -11,28 +11,28 @@ import java.util.stream.Collectors;
 import static java.util.function.Function.identity;
 
 @JacksonXmlRootElement(localName = "kartoteki")
-public class Carts {
+public class Cards {
     @JacksonXmlProperty(localName = "kartoteka")
     @JacksonXmlElementWrapper(useWrapping = false)
-    private final List<Cart> carts;
+    private final List<Card> cards;
 
 
-    public Carts() {
-        this.carts = null;
+    public Cards() {
+        this.cards = null;
     }
 
-    public Carts(List<Cart> carts) {
-        this.carts = carts;
+    public Cards(List<Card> carts) {
+        this.cards = carts;
     }
 
     @Override
     public String toString() {
         return "Carts{" +
-                "carts=" + carts +
+                "carts=" + cards +
                 '}';
     }
 
-    public Map<Integer, Cart> getCartMap() {
-        return carts.stream().collect(Collectors.toMap(Cart::getId, identity()));
+    public Map<Integer, Card> getCartMap() {
+        return cards.stream().collect(Collectors.toMap(Card::getId, identity()));
     }
 }

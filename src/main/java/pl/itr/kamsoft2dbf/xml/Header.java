@@ -1,4 +1,4 @@
-package pl.itr.xml;
+package pl.itr.kamsoft2dbf.xml;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
@@ -6,22 +6,22 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 @JacksonXmlRootElement(localName = "naglowek")
 public class Header {
     @JacksonXmlProperty(localName = "kontrahent")
-    private final Integer kontrahent;
+    private final Integer contractor;
     @JacksonXmlProperty(localName = "nr-dokumentu")
     private final String docNo;
 
     public Header() {
         this.docNo = null;
-        this.kontrahent = null;
+        this.contractor = null;
     }
 
-    public Header(Integer kontrahent, String docNo) {
-        this.kontrahent = kontrahent;
+    public Header(Integer contractor, String docNo) {
+        this.contractor = contractor;
         this.docNo = docNo;
     }
 
-    public Integer getKontrahent() {
-        return kontrahent;
+    public Integer getContractor() {
+        return contractor;
     }
 
     public String getDocNo() { return docNo; }
@@ -29,7 +29,7 @@ public class Header {
     @Override
     public String toString() {
         return "Header{" +
-                "kontrahent=" + kontrahent +
+                "contractor=" + contractor +
                 ", docNo='" + docNo  +
                 '}';
     }
