@@ -24,7 +24,9 @@ public class Header {
         return contractor;
     }
 
-    public String getDocNo() { return docNo; }
+    public String getDocNo() {
+        return docNo;
+    }
 
     @Override
     public String toString() {

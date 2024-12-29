@@ -18,8 +18,7 @@ import static pl.itr.kamsoft2dbf.dbf.Fields.*;
 
 public class Dbf {
     public static void save(String fileName, Documents documents) throws FileNotFoundException {
-        DBFWriter writer = new DBFWriter(new FileOutputStream(fileName));
-        writer.setCharset(Charset.forName(MAZOVIA_CHARSET_NAME));
+        DBFWriter writer = new DBFWriter(new FileOutputStream(fileName), Charset.forName(MAZOVIA_CHARSET_NAME));
         writer.setFields(getFields());
         documents.getDocuments().forEach(document -> {
             writer.addRecord(toRecord(document));
@@ -28,8 +27,7 @@ public class Dbf {
     }
 
     public static Documents read(String fileName) throws FileNotFoundException {
-        DBFReader reader = new DBFReader(new FileInputStream(fileName));
-        reader.setCharset(Charset.forName(MAZOVIA_CHARSET_NAME));
+        DBFReader reader = new DBFReader(new FileInputStream(fileName), Charset.forName(MAZOVIA_CHARSET_NAME));
         DBFRow row;
 
         List<Document> documents = new ArrayList<>();
@@ -42,6 +40,7 @@ public class Dbf {
                     )
             );
         }
+        reader.close();
         return new Documents(documents);
     }
 

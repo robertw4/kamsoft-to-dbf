@@ -23,11 +23,17 @@ public class Card {
         this.vatId = vatId;
     }
 
-    public Integer getId() { return id; }
+    public Integer getId() {
+        return id;
+    }
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
-    public String getVatId() { return vatId; }
+    public String getVatId() {
+        return vatId;
+    }
 
     @Override
     public String toString() {
