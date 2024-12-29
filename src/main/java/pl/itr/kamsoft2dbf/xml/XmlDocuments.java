@@ -11,8 +11,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
-
 @JacksonXmlRootElement(localName = "dokumenty")
 public class XmlDocuments {
     @JacksonXmlElementWrapper(useWrapping = false)

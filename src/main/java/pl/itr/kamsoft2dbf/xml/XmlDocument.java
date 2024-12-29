@@ -24,8 +24,16 @@ public class XmlDocument {
         return Optional.ofNullable(header)
                 .map(Header::getContractor)
                 .map(cardMap::get)
-                .map(card -> new Document(card.getName(), card.getVatId(), header.getDocNo()))
-                .orElse( new Document(header.getDocNo()));
+                .map(this::toDocument)
+                .orElse(toDocument());
+    }
+
+    private Document toDocument(Card card) {
+        return new Document(card.getName(), card.getVatId(), header.getDocNo());
+    }
+
+    private Document toDocument() {
+        return new Document(header.getDocNo());
     }
 
     @Override
