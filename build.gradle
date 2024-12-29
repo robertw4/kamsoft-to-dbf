@@ -18,6 +18,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    workingDir "src/test/resources/"
 }
 
 jar {
