@@ -14,10 +14,7 @@ public class Main {
         final var inputFile = args[0];
         final var outputFile = args[1];
         try {
-            Dbf.save(
-                    outputFile,
-                    XmlDocuments.fromFile(inputFile)
-            );
+            Dbf.save(outputFile, XmlDocuments.fromFile(inputFile));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -32,13 +32,7 @@ public class Dbf {
 
         List<Document> documents = new ArrayList<>();
         while ((row = reader.nextRow()) != null) {
-            documents.add(
-                    new Document(
-                            row.getString(NZWK.name()),
-                            row.getString(NIPK.name()),
-                            row.getString(NRDOK.name())
-                    )
-            );
+            documents.add(toDocument(row));
         }
         reader.close();
         return new Documents(documents);
@@ -50,5 +44,13 @@ public class Dbf {
                 document.getContractorName(),
                 document.getVatId()
         };
+    }
+
+    private static Document toDocument(DBFRow row) {
+        return new Document(
+                row.getString(NZWK.name()),
+                row.getString(NIPK.name()),
+                row.getString(NRDOK.name())
+        );
     }
 }
