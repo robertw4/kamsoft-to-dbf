@@ -41,7 +41,7 @@ class MainTest {
             var doc1 = docs.getDocuments().get(0);
             assertEquals("100001", doc1.getDocNo());
             assertEquals("8790017162", doc1.getVatId());
-            assertEquals("NEUCA SPÓ?KA AKCYJNA", doc1.getContractorName());
+            assertEquals("NEUCA SPÓŁKA AKCYJNA", doc1.getContractorName());
 
             var doc2 = docs.getDocuments().get(1);
             assertEquals("100002", doc2.getDocNo());

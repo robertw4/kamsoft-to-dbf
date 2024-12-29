@@ -12,6 +12,7 @@ repositories {
 dependencies {
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.11.1'
     implementation 'com.github.albfernandez:javadbf:1.13.1'
+    implementation 'eu.vitaliy:mazovia-charset:1.0'
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
