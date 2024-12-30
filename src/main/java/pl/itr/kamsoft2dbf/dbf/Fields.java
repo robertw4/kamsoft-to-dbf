@@ -8,6 +8,9 @@ import java.util.Arrays;
 import static com.linuxense.javadbf.DBFDataType.CHARACTER;
 
 public enum Fields {
+    TYPK(CHARACTER, 1),
+    TYPR(CHARACTER, 1),
+    TYPD(CHARACTER, 6),
     NRDOK(CHARACTER, 20),
     NZWK(CHARACTER, 100),
     NIPK(CHARACTER, 15);

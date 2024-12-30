@@ -40,6 +40,9 @@ public class Dbf {
 
     private static Object[] toRecord(Document document) {
         return new Object[] {
+                "T",
+                "D",
+                document.getDocumentType(),
                 document.getDocNo(),
                 document.getContractorName(),
                 document.getVatId()
@@ -50,7 +53,9 @@ public class Dbf {
         return new Document(
                 row.getString(NZWK.name()),
                 row.getString(NIPK.name()),
-                row.getString(NRDOK.name())
+                row.getString(NRDOK.name()),
+                row.getString(TYPR.name()),
+                row.getString(TYPD.name())
         );
     }
 }

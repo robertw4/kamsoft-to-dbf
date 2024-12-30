@@ -4,17 +4,24 @@ public class Document {
     private final String contractorName;
     private final String vatId;
     private final String docNo;
+    private final String paymentDeadlineType;
+    private final String documentType;
 
-    public Document(String contractorName, String vatId, String docNo) {
+    public Document(String contractorName,
+                    String vatId,
+                    String docNo,
+                    String paymentDeadlineType,
+                    String documentType
+    ) {
         this.contractorName = contractorName;
         this.vatId = vatId;
         this.docNo = docNo;
+        this.paymentDeadlineType = paymentDeadlineType;
+        this.documentType = documentType;
     }
 
-    public Document(String docNo) {
-        this.contractorName = null;
-        this.vatId = null;
-        this.docNo = docNo;
+    public Document(String docNo, String paymentDeadlineType, String documentType) {
+        this(null, null, docNo, paymentDeadlineType, documentType);
     }
 
     public String getContractorName() {
@@ -36,5 +43,13 @@ public class Document {
                 ", vatId='" + vatId + '\'' +
                 ", docNo='" + docNo + '\'' +
                 '}';
+    }
+
+    public String getPaymentDeadlineType() {
+        return paymentDeadlineType;
+    }
+
+    public String getDocumentType() {
+        return documentType;
     }
 }

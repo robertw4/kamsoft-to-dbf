@@ -9,15 +9,20 @@ public class Header {
     private final Integer contractor;
     @JacksonXmlProperty(localName = "nr-dokumentu")
     private final String docNo;
+    @JacksonXmlProperty(localName = "termin-platnosci")
+    private final PaymentDeadline paymentDeadline;
+    @JacksonXmlProperty(localName = "typ-dokumentu")
+    private final String documentType;
 
-    public Header() {
-        this.docNo = null;
-        this.contractor = null;
-    }
-
-    public Header(Integer contractor, String docNo) {
+    public Header(Integer contractor, String docNo, PaymentDeadline paymentDeadline, String documentType) {
         this.contractor = contractor;
         this.docNo = docNo;
+        this.paymentDeadline = paymentDeadline;
+        this.documentType = documentType;
+    }
+
+    public Header() {
+        this(null, null, null, null);
     }
 
     public Integer getContractor() {
@@ -26,6 +31,21 @@ public class Header {
 
     public String getDocNo() {
         return docNo;
+    }
+
+    public PaymentDeadline getPaymentDeatline() {
+        return paymentDeadline;
+    }
+
+    public String toDocumentType() {
+        return switch (documentType) {
+            case "FZ" -> "FZV";
+            case "SBKF" -> "SBK";
+            case "FS" -> "FSV";
+            case "KFZ" -> "KZV";
+            case "KRFF" -> "KRF";
+            default -> documentType;
+        };
     }
 
     @Override

@@ -29,11 +29,28 @@ public class XmlDocument {
     }
 
     private Document toDocument(Card card) {
-        return new Document(card.getName(), card.getVatId(), header.getDocNo());
+        return new Document(
+                card.getFullName(),
+                card.getVatId(),
+                header.getDocNo(),
+                getPaymentType(),
+                header.toDocumentType()
+        );
     }
 
     private Document toDocument() {
-        return new Document(header.getDocNo());
+        return new Document(
+                header.getDocNo(),
+                getPaymentType(),
+                header.toDocumentType()
+        );
+    }
+
+    private String getPaymentType() {
+        return Optional.ofNullable(header)
+                .map(Header::getPaymentDeatline)
+                .map(PaymentDeadline::getType).
+                orElse(null);
     }
 
     @Override

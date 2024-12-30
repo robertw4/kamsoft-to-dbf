@@ -8,23 +8,68 @@
       <nazwa1>POLSKA GRUPA FARMACEUTYCZNA S.A.</nazwa1>
       <nip>527-264-39-21</nip>
     </kartoteka>
+    <kartoteka lp="3">
+      <nazwa1>Jan</nazwa1>
+      <nazwa2>Kowalski</nazwa2>
+    </kartoteka>
   </kartoteki>
   <dokument lp="1">
     <naglowek>
       <kontrahent>1</kontrahent>
       <nr-dokumentu>100001</nr-dokumentu>
+      <typ-dokumentu>FZ</typ-dokumentu>
+      <termin-platnosci>
+        <rodzaj>D</rodzaj>
+        <data>2024-12-16</data>
+      </termin-platnosci>
     </naglowek>
   </dokument>
   <dokument lp="2">
     <naglowek>
       <kontrahent>2</kontrahent>
       <nr-dokumentu>100002</nr-dokumentu>
+      <typ-dokumentu>FZ</typ-dokumentu>
+      <termin-platnosci>
+        <rodzaj>D</rodzaj>
+        <data>2024-12-01</data>
+      </termin-platnosci>
     </naglowek>
   </dokument>
   <dokument lp="3">
     <naglowek>
       <nr-dokumentu>100003</nr-dokumentu>
+      <typ-dokumentu>SBKF</typ-dokumentu>
       <ss>Invalid</ss>
     </naglowek>
   </dokument>
+  <dokument lp="4">
+    <naglowek>
+      <kontrahent>3</kontrahent>
+      <nr-dokumentu>76/2024</nr-dokumentu>
+      <typ-dokumentu>FS</typ-dokumentu>
+      <termin-platnosci>
+        <rodzaj>D</rodzaj>
+        <data>2024-12-16</data>
+      </termin-platnosci>
+    </naglowek>
+  </dokument>
+  <dokument lp="5">
+    <naglowek>
+      <kontrahent>2</kontrahent>
+      <nr-dokumentu>2660707383</nr-dokumentu>
+      <typ-dokumentu>KFZ</typ-dokumentu>
+      <termin-platnosci>
+        <rodzaj>D</rodzaj>
+        <data>2024-12-16</data>
+      </termin-platnosci>
+    </naglowek>
+  </dokument>
+  <dokument lp="6">
+    <naglowek>
+      <nr-dokumentu>20241121</nr-dokumentu>
+      <typ-dokumentu>KRFF</typ-dokumentu>
+      <ss>Invalid</ss>
+    </naglowek>
+  </dokument>
+
 </dokumenty>
