@@ -18,6 +18,8 @@
       <kontrahent>1</kontrahent>
       <nr-dokumentu>100001</nr-dokumentu>
       <typ-dokumentu>FZ</typ-dokumentu>
+      <data-wystawienia>2024-10-31</data-wystawienia>
+      <data-otrzymania>2024-11-02</data-otrzymania>
       <termin-platnosci>
         <rodzaj>D</rodzaj>
         <data>2024-12-16</data>
@@ -29,6 +31,8 @@
       <kontrahent>2</kontrahent>
       <nr-dokumentu>100002</nr-dokumentu>
       <typ-dokumentu>FZ</typ-dokumentu>
+      <data-wystawienia>2024-11-01</data-wystawienia>
+      <data-otrzymania>2024-11-01</data-otrzymania>
       <termin-platnosci>
         <rodzaj>D</rodzaj>
         <data>2024-12-01</data>
@@ -39,6 +43,8 @@
     <naglowek>
       <nr-dokumentu>100003</nr-dokumentu>
       <typ-dokumentu>SBKF</typ-dokumentu>
+      <data-wystawienia>2024-11-04</data-wystawienia>
+      <data-otrzymania>2024-11-05</data-otrzymania>
       <ss>Invalid</ss>
     </naglowek>
   </dokument>
@@ -47,6 +53,8 @@
       <kontrahent>3</kontrahent>
       <nr-dokumentu>76/2024</nr-dokumentu>
       <typ-dokumentu>FS</typ-dokumentu>
+      <data-wystawienia>2024-11-11</data-wystawienia>
+      <data-otrzymania>2024-11-11</data-otrzymania>
       <termin-platnosci>
         <rodzaj>D</rodzaj>
         <data>2024-12-16</data>
@@ -58,6 +66,8 @@
       <kontrahent>2</kontrahent>
       <nr-dokumentu>2660707383</nr-dokumentu>
       <typ-dokumentu>KFZ</typ-dokumentu>
+      <data-wystawienia>2024-11-28</data-wystawienia>
+      <data-otrzymania>2024-11-28</data-otrzymania>
       <termin-platnosci>
         <rodzaj>D</rodzaj>
         <data>2024-12-16</data>
@@ -68,6 +78,8 @@
     <naglowek>
       <nr-dokumentu>20241121</nr-dokumentu>
       <typ-dokumentu>KRFF</typ-dokumentu>
+      <data-wystawienia>2024-11-29</data-wystawienia>
+      <data-otrzymania>2024-11-30</data-otrzymania>
       <ss>Invalid</ss>
     </naglowek>
   </dokument>

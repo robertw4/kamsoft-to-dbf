@@ -43,6 +43,9 @@ public class Dbf {
                 "T",
                 "D",
                 document.getDocumentType(),
+                null,
+                document.getDocumentDate(),
+                document.getReceimpmentDate(),
                 document.getDocNo(),
                 document.getContractorName(),
                 document.getVatId()
@@ -55,7 +58,9 @@ public class Dbf {
                 row.getString(NIPK.name()),
                 row.getString(NRDOK.name()),
                 row.getString(TYPR.name()),
-                row.getString(TYPD.name())
+                row.getString(TYPD.name()),
+                row.getDate(DTA2.name()),
+                row.getDate(DTA3.name())
         );
     }
 }

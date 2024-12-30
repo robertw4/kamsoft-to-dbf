@@ -6,11 +6,15 @@ import com.linuxense.javadbf.DBFField;
 import java.util.Arrays;
 
 import static com.linuxense.javadbf.DBFDataType.CHARACTER;
+import static com.linuxense.javadbf.DBFDataType.DATE;
 
 public enum Fields {
     TYPK(CHARACTER, 1),
     TYPR(CHARACTER, 1),
     TYPD(CHARACTER, 6),
+    DTA1(DATE),
+    DTA2(DATE),
+    DTA3(DATE),
     NRDOK(CHARACTER, 20),
     NZWK(CHARACTER, 100),
     NIPK(CHARACTER, 15);
@@ -21,6 +25,10 @@ public enum Fields {
     Fields(DBFDataType type, Integer length) {
         this.type = type;
         this.length = length;
+    }
+
+    Fields(DBFDataType type) {
+        this(type, 8);
     }
 
     public static DBFField[] getFields() {

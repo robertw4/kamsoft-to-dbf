@@ -34,7 +34,9 @@ public class XmlDocument {
                 card.getVatId(),
                 header.getDocNo(),
                 getPaymentType(),
-                header.toDocumentType()
+                header.toDocumentType(),
+                header.getDocumentDate(),
+                header.getReceipmentDate()
         );
     }
 
@@ -42,7 +44,9 @@ public class XmlDocument {
         return new Document(
                 header.getDocNo(),
                 getPaymentType(),
-                header.toDocumentType()
+                header.toDocumentType(),
+                header.getDocumentDate(),
+                header.getReceipmentDate()
         );
     }
 

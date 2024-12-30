@@ -7,6 +7,8 @@ import pl.itr.kamsoft2dbf.dbf.Dbf;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.time.ZoneId;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -44,6 +46,8 @@ class MainTest {
             assertEquals("NEUCA SPÓŁKA AKCYJNA", doc1.getContractorName());
             assertEquals("D", doc1.getPaymentDeadlineType());
             assertEquals("FZV", doc1.getDocumentType());
+            assertEquals("2024-10-31", dateToString(doc1.getDocumentDate()));
+            assertEquals("2024-11-02", dateToString(doc1.getReceimpmentDate()));
 
             var doc2 = docs.getDocuments().get(1);
             assertEquals("100002", doc2.getDocNo());
@@ -51,6 +55,8 @@ class MainTest {
             assertEquals("POLSKA GRUPA FARMACEUTYCZNA S.A.", doc2.getContractorName());
             assertEquals("D", doc2.getPaymentDeadlineType());
             assertEquals("FZV", doc2.getDocumentType());
+            assertEquals("2024-11-01", dateToString(doc2.getDocumentDate()));
+            assertEquals("2024-11-01", dateToString(doc2.getReceimpmentDate()));
 
             var doc3 = docs.getDocuments().get(2);
             assertEquals("100003", doc3.getDocNo());
@@ -58,6 +64,8 @@ class MainTest {
             assertEquals("", doc3.getContractorName());
             assertEquals("D", doc3.getPaymentDeadlineType());
             assertEquals("SBK", doc3.getDocumentType());
+            assertEquals("2024-11-04", dateToString(doc3.getDocumentDate()));
+            assertEquals("2024-11-05", dateToString(doc3.getReceimpmentDate()));
 
             var doc4 = docs.getDocuments().get(3);
             assertEquals("76/2024", doc4.getDocNo());
@@ -65,6 +73,8 @@ class MainTest {
             assertEquals("Jan Kowalski", doc4.getContractorName());
             assertEquals("D", doc4.getPaymentDeadlineType());
             assertEquals("FSV", doc4.getDocumentType());
+            assertEquals("2024-11-11", dateToString(doc4.getDocumentDate()));
+            assertEquals("2024-11-11", dateToString(doc4.getReceimpmentDate()));
 
             var doc5 = docs.getDocuments().get(4);
             assertEquals("2660707383", doc5.getDocNo());
@@ -72,6 +82,8 @@ class MainTest {
             assertEquals("POLSKA GRUPA FARMACEUTYCZNA S.A.", doc5.getContractorName());
             assertEquals("D", doc5.getPaymentDeadlineType());
             assertEquals("KZV", doc5.getDocumentType());
+            assertEquals("2024-11-28", dateToString(doc5.getDocumentDate()));
+            assertEquals("2024-11-28", dateToString(doc5.getReceimpmentDate()));
 
             var doc6 = docs.getDocuments().get(5);
             assertEquals("20241121", doc6.getDocNo());
@@ -79,11 +91,14 @@ class MainTest {
             assertEquals("", doc6.getContractorName());
             assertEquals("D", doc6.getPaymentDeadlineType());
             assertEquals("KRF", doc6.getDocumentType());
-
-
-
+            assertEquals("2024-11-29", dateToString(doc6.getDocumentDate()));
+            assertEquals("2024-11-30", dateToString(doc6.getReceimpmentDate()));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private String dateToString(Date date) {
+        return date.toInstant().atZone(ZoneId.of("CET")).toString().substring(0, 10);
     }
 }
