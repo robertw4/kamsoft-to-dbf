@@ -75,7 +75,7 @@ public class Header {
 
     private Date parse(String date) {
         return java.util.Date.from(LocalDate.parse(date).atStartOfDay()
-                .atZone(ZoneId.of("CET"))
+                .atZone(ZoneId.of("Z"))
                 .toInstant());
     }
 
