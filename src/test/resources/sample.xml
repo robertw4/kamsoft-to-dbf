@@ -59,6 +59,7 @@
         <rodzaj>D</rodzaj>
         <data>2024-12-16</data>
       </termin-platnosci>
+      <status-fiskalny>P</status-fiskalny>
     </naglowek>
   </dokument>
   <dokument lp="5">

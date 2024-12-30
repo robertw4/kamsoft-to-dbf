@@ -46,6 +46,8 @@ public class Dbf {
                 null,
                 document.getDocumentDate(),
                 document.getReceimpmentDate(),
+                document.getPaymentDate(),
+                document.getFiscal(),
                 document.getDocNo(),
                 document.getContractorName(),
                 document.getVatId()
@@ -60,7 +62,9 @@ public class Dbf {
                 row.getString(TYPR.name()),
                 row.getString(TYPD.name()),
                 row.getDate(DTA2.name()),
-                row.getDate(DTA3.name())
+                row.getDate(DTA3.name()),
+                row.getDate(DTA4.name()),
+                row.getString(NKNT.name())
         );
     }
 }

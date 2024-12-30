@@ -7,16 +7,23 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 public class PaymentDeadline {
     @JacksonXmlProperty(localName = "rodzaj")
     private final String type;
+    @JacksonXmlProperty(localName = "data")
+    private final String paymentDate;
 
-    public PaymentDeadline(String type) {
+    public PaymentDeadline(String type, String paymentDate) {
         this.type = type;
+        this.paymentDate = paymentDate;
     }
 
     public PaymentDeadline() {
-        this(null);
+        this(null, null);
     }
 
     public String getType() {
         return type;
+    }
+
+    public String getPaymentDate() {
+        return paymentDate;
     }
 }

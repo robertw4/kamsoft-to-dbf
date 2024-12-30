@@ -36,7 +36,9 @@ public class XmlDocument {
                 getPaymentType(),
                 header.toDocumentType(),
                 header.getDocumentDate(),
-                header.getReceipmentDate()
+                header.getReceipmentDate(),
+                header.getPaymentDate(),
+                header.getFiscal()
         );
     }
 
@@ -46,7 +48,9 @@ public class XmlDocument {
                 getPaymentType(),
                 header.toDocumentType(),
                 header.getDocumentDate(),
-                header.getReceipmentDate()
+                header.getReceipmentDate(),
+                header.getPaymentDate(),
+                header.getFiscal()
         );
     }
 

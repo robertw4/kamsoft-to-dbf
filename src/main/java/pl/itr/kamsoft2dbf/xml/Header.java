@@ -6,6 +6,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Optional;
 
 @JacksonXmlRootElement(localName = "naglowek")
 public class Header {
@@ -21,6 +22,8 @@ public class Header {
     private final String documentDate;
     @JacksonXmlProperty(localName = "data-otrzymania")
     private final String receipmentDate;
+    @JacksonXmlProperty(localName = "status-fiskalny")
+    private final String fiscal;
 
     public Header(
             Integer contractor,
@@ -28,7 +31,7 @@ public class Header {
             PaymentDeadline paymentDeadline,
             String documentType,
             String documentDate,
-            String receipmentDate
+            String receipmentDate, String fiscal
     ) {
         this.contractor = contractor;
         this.docNo = docNo;
@@ -36,10 +39,11 @@ public class Header {
         this.documentType = documentType;
         this.documentDate = documentDate;
         this.receipmentDate = receipmentDate;
+        this.fiscal = fiscal;
     }
 
     public Header() {
-        this(null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null);
     }
 
     public Integer getContractor() {
@@ -71,6 +75,20 @@ public class Header {
 
     public Date getReceipmentDate() {
         return parse(receipmentDate);
+    }
+
+    public Date getPaymentDate() {
+        return Optional.ofNullable(paymentDeadline)
+                .map(PaymentDeadline::getPaymentDate)
+                .map(this::parse)
+                .orElse(null);
+    }
+
+    public String getFiscal() {
+        return Optional.ofNullable(fiscal)
+                .filter(it -> it.equals("P"))
+                .map(it -> "1")
+                .orElse(null);
     }
 
     private Date parse(String date) {

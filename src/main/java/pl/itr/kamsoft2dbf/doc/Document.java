@@ -10,6 +10,8 @@ public class Document {
     private final String documentType;
     private final Date documentDate;
     private final Date receimpmentDate;
+    private final Date paymentDate;
+    private final String fiscal;
 
     public Document(String contractorName,
                     String vatId,
@@ -17,7 +19,7 @@ public class Document {
                     String paymentDeadlineType,
                     String documentType,
                     Date documentDate,
-                    Date receimpmentDate
+                    Date receimpmentDate, Date paymentDate, String fiscal
     ) {
         this.contractorName = contractorName;
         this.vatId = vatId;
@@ -26,10 +28,29 @@ public class Document {
         this.documentType = documentType;
         this.documentDate = documentDate;
         this.receimpmentDate = receimpmentDate;
+        this.paymentDate = paymentDate;
+        this.fiscal = fiscal;
     }
 
-    public Document(String docNo, String paymentDeadlineType, String documentType, Date documentDate, Date receimpmentDate) {
-        this(null, null, docNo, paymentDeadlineType, documentType, documentDate, receimpmentDate);
+    public Document(
+            String docNo,
+            String paymentDeadlineType,
+            String documentType,
+            Date documentDate,
+            Date receimpmentDate,
+            Date paymentDate,
+            String fiscal
+    ) {
+        this(null,
+                null,
+                docNo,
+                paymentDeadlineType,
+                documentType,
+                documentDate,
+                receimpmentDate,
+                paymentDate,
+                fiscal
+        );
     }
 
     public String getContractorName() {
@@ -67,5 +88,13 @@ public class Document {
                 ", vatId='" + vatId + '\'' +
                 ", docNo='" + docNo + '\'' +
                 '}';
+    }
+
+    public Date getPaymentDate() {
+        return paymentDate;
+    }
+
+    public String getFiscal() {
+        return fiscal;
     }
 }
