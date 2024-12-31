@@ -45,7 +45,7 @@ public class Dbf {
                 document.getDocumentType(),
                 null,
                 document.getDocumentDate(),
-                document.getReceimpmentDate(),
+                document.getFiscalDate(),
                 document.getPaymentDate(),
                 document.getFiscal(),
                 document.getDocNo(),

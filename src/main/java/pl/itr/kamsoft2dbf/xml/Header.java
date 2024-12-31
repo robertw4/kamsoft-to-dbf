@@ -21,7 +21,9 @@ public class Header {
     @JacksonXmlProperty(localName = "data-wystawienia")
     private final String documentDate;
     @JacksonXmlProperty(localName = "data-otrzymania")
-    private final String receipmentDate;
+    private final String recipientDate;
+    @JacksonXmlProperty(localName = "data-sprzedazy")
+    private final String saleDate;
     @JacksonXmlProperty(localName = "status-fiskalny")
     private final String fiscal;
 
@@ -31,19 +33,22 @@ public class Header {
             PaymentDeadline paymentDeadline,
             String documentType,
             String documentDate,
-            String receipmentDate, String fiscal
+            String recipientDate,
+            String saleDate,
+            String fiscal
     ) {
         this.contractor = contractor;
         this.docNo = docNo;
         this.paymentDeadline = paymentDeadline;
         this.documentType = documentType;
         this.documentDate = documentDate;
-        this.receipmentDate = receipmentDate;
+        this.recipientDate = recipientDate;
+        this.saleDate = saleDate;
         this.fiscal = fiscal;
     }
 
     public Header() {
-        this(null, null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null, null);
     }
 
     public Integer getContractor() {
@@ -70,17 +75,20 @@ public class Header {
     }
 
     public Date getDocumentDate() {
-        return parse(documentDate);
+        return parse(documentDate).orElse(null);
     }
 
-    public Date getReceipmentDate() {
-        return parse(receipmentDate);
+    public Date getFiscalDate() {
+        return parse(recipientDate)
+                .orElse(parse(saleDate)
+                        .orElse(null)
+                );
     }
 
     public Date getPaymentDate() {
         return Optional.ofNullable(paymentDeadline)
                 .map(PaymentDeadline::getPaymentDate)
-                .map(this::parse)
+                .flatMap(this::parse)
                 .orElse(null);
     }
 
@@ -91,10 +99,11 @@ public class Header {
                 .orElse(null);
     }
 
-    private Date parse(String date) {
-        return java.util.Date.from(LocalDate.parse(date).atStartOfDay()
-                .atZone(ZoneId.of("Z"))
-                .toInstant());
+    private Optional<Date> parse(String date) {
+        return Optional.ofNullable(date)
+                .map(LocalDate::parse)
+                .map(it -> it.atStartOfDay().atZone(ZoneId.of("Z")).toInstant())
+                .map(Date::from);
     }
 
     @Override

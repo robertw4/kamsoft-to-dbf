@@ -9,7 +9,7 @@ public class Document {
     private final String paymentDeadlineType;
     private final String documentType;
     private final Date documentDate;
-    private final Date receimpmentDate;
+    private final Date fiscalDate;
     private final Date paymentDate;
     private final String fiscal;
 
@@ -19,7 +19,7 @@ public class Document {
                     String paymentDeadlineType,
                     String documentType,
                     Date documentDate,
-                    Date receimpmentDate, Date paymentDate, String fiscal
+                    Date fiscalDate, Date paymentDate, String fiscal
     ) {
         this.contractorName = contractorName;
         this.vatId = vatId;
@@ -27,7 +27,7 @@ public class Document {
         this.paymentDeadlineType = paymentDeadlineType;
         this.documentType = documentType;
         this.documentDate = documentDate;
-        this.receimpmentDate = receimpmentDate;
+        this.fiscalDate = fiscalDate;
         this.paymentDate = paymentDate;
         this.fiscal = fiscal;
     }
@@ -37,7 +37,7 @@ public class Document {
             String paymentDeadlineType,
             String documentType,
             Date documentDate,
-            Date receimpmentDate,
+            Date fiscalDate,
             Date paymentDate,
             String fiscal
     ) {
@@ -47,7 +47,7 @@ public class Document {
                 paymentDeadlineType,
                 documentType,
                 documentDate,
-                receimpmentDate,
+                fiscalDate,
                 paymentDate,
                 fiscal
         );
@@ -77,8 +77,16 @@ public class Document {
         return documentDate;
     }
 
-    public Date getReceimpmentDate() {
-        return receimpmentDate;
+    public Date getFiscalDate() {
+        return fiscalDate;
+    }
+
+    public Date getPaymentDate() {
+        return paymentDate;
+    }
+
+    public String getFiscal() {
+        return fiscal;
     }
 
     @Override
@@ -88,13 +96,5 @@ public class Document {
                 ", vatId='" + vatId + '\'' +
                 ", docNo='" + docNo + '\'' +
                 '}';
-    }
-
-    public Date getPaymentDate() {
-        return paymentDate;
-    }
-
-    public String getFiscal() {
-        return fiscal;
     }
 }

@@ -44,7 +44,7 @@
       <nr-dokumentu>100003</nr-dokumentu>
       <typ-dokumentu>SBKF</typ-dokumentu>
       <data-wystawienia>2024-11-04</data-wystawienia>
-      <data-otrzymania>2024-11-05</data-otrzymania>
+      <data-sprzedazy>2024-11-05</data-sprzedazy>
       <ss>Invalid</ss>
     </naglowek>
   </dokument>
@@ -54,7 +54,7 @@
       <nr-dokumentu>76/2024</nr-dokumentu>
       <typ-dokumentu>FS</typ-dokumentu>
       <data-wystawienia>2024-11-11</data-wystawienia>
-      <data-otrzymania>2024-11-11</data-otrzymania>
+      <data-sprzedazy>2024-11-11</data-sprzedazy>
       <termin-platnosci>
         <rodzaj>D</rodzaj>
         <data>2024-12-16</data>
@@ -80,7 +80,6 @@
       <nr-dokumentu>20241121</nr-dokumentu>
       <typ-dokumentu>KRFF</typ-dokumentu>
       <data-wystawienia>2024-11-29</data-wystawienia>
-      <data-otrzymania>2024-11-30</data-otrzymania>
       <ss>Invalid</ss>
     </naglowek>
   </dokument>

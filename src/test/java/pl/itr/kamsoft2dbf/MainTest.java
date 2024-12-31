@@ -48,7 +48,7 @@ class MainTest {
             assertEquals("D", doc1.getPaymentDeadlineType());
             assertEquals("FZV", doc1.getDocumentType());
             assertEquals("2024-10-31", dateToString(doc1.getDocumentDate()));
-            assertEquals("2024-11-02", dateToString(doc1.getReceimpmentDate()));
+            assertEquals("2024-11-02", dateToString(doc1.getFiscalDate()));
             assertEquals("2024-12-16", dateToString(doc1.getPaymentDate()));
             assertEquals("", doc1.getFiscal());
 
@@ -59,7 +59,7 @@ class MainTest {
             assertEquals("D", doc2.getPaymentDeadlineType());
             assertEquals("FZV", doc2.getDocumentType());
             assertEquals("2024-11-01", dateToString(doc2.getDocumentDate()));
-            assertEquals("2024-11-01", dateToString(doc2.getReceimpmentDate()));
+            assertEquals("2024-11-01", dateToString(doc2.getFiscalDate()));
             assertEquals("2024-12-01", dateToString(doc2.getPaymentDate()));
             assertEquals("", doc2.getFiscal());
 
@@ -70,7 +70,7 @@ class MainTest {
             assertEquals("D", doc3.getPaymentDeadlineType());
             assertEquals("SBK", doc3.getDocumentType());
             assertEquals("2024-11-04", dateToString(doc3.getDocumentDate()));
-            assertEquals("2024-11-05", dateToString(doc3.getReceimpmentDate()));
+            assertEquals("2024-11-05", dateToString(doc3.getFiscalDate()));
             assertNull(doc3.getPaymentDate());
             assertEquals("", doc3.getFiscal());
 
@@ -81,7 +81,7 @@ class MainTest {
             assertEquals("D", doc4.getPaymentDeadlineType());
             assertEquals("FSV", doc4.getDocumentType());
             assertEquals("2024-11-11", dateToString(doc4.getDocumentDate()));
-            assertEquals("2024-11-11", dateToString(doc4.getReceimpmentDate()));
+            assertEquals("2024-11-11", dateToString(doc4.getFiscalDate()));
             assertEquals("2024-12-16", dateToString(doc4.getPaymentDate()));
             assertEquals("1", doc4.getFiscal());
 
@@ -92,7 +92,7 @@ class MainTest {
             assertEquals("D", doc5.getPaymentDeadlineType());
             assertEquals("KZV", doc5.getDocumentType());
             assertEquals("2024-11-28", dateToString(doc5.getDocumentDate()));
-            assertEquals("2024-11-28", dateToString(doc5.getReceimpmentDate()));
+            assertEquals("2024-11-28", dateToString(doc5.getFiscalDate()));
             assertEquals("2024-12-16", dateToString(doc5.getPaymentDate()));
             assertEquals("", doc5.getFiscal());
 
@@ -103,7 +103,7 @@ class MainTest {
             assertEquals("D", doc6.getPaymentDeadlineType());
             assertEquals("KRF", doc6.getDocumentType());
             assertEquals("2024-11-29", dateToString(doc6.getDocumentDate()));
-            assertEquals("2024-11-30", dateToString(doc6.getReceimpmentDate()));
+            assertNull(doc6.getFiscalDate());
             assertNull(doc6.getPaymentDate());
             assertEquals("", doc6.getFiscal());
 
