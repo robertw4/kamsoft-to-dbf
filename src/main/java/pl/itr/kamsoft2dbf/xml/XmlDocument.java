@@ -29,29 +29,33 @@ public class XmlDocument {
     }
 
     private Document toDocument(Card card) {
-        return new Document(
-                card.getFullName(),
-                card.getVatId(),
-                header.getDocNo(),
-                getPaymentType(),
-                header.toDocumentType(),
-                header.getDocumentDate(),
-                header.getFiscalDate(),
-                header.getPaymentDate(),
-                header.getFiscal()
-        );
+        return Optional.ofNullable(header)
+                .filter(it -> it.toDocumentType() != null)
+                .map(it -> new Document(
+                        card.getFullName(),
+                        card.getVatId(),
+                        it.getDocNo(),
+                        getPaymentType(),
+                        it.toDocumentType(),
+                        it.getDocumentDate(),
+                        it.getFiscalDate(),
+                        it.getPaymentDate(),
+                        it.getFiscal()
+                )).orElse(null);
     }
 
     private Document toDocument() {
-        return new Document(
-                header.getDocNo(),
-                getPaymentType(),
-                header.toDocumentType(),
-                header.getDocumentDate(),
-                header.getFiscalDate(),
-                header.getPaymentDate(),
-                header.getFiscal()
-        );
+        return Optional.ofNullable(header)
+                .filter(it -> it.toDocumentType() != null)
+                .map(it -> new Document(
+                        it.getDocNo(),
+                        getPaymentType(),
+                        it.toDocumentType(),
+                        it.getDocumentDate(),
+                        it.getFiscalDate(),
+                        it.getPaymentDate(),
+                        it.getFiscal()
+                )).orElse(null);
     }
 
     private String getPaymentType() {

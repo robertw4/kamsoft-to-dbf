@@ -66,11 +66,11 @@ public class Header {
     public String toDocumentType() {
         return switch (documentType) {
             case "FZ" -> "FZV";
-            case "SBKF" -> "SBK";
+            case "SBKB" -> "SBK";
             case "FS" -> "FSV";
             case "KFZ" -> "KZV";
             case "KRFF" -> "KRF";
-            default -> documentType;
+            default -> null;
         };
     }
 

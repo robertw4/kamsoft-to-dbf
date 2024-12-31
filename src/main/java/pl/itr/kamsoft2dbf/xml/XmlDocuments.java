@@ -10,6 +10,7 @@ import pl.itr.kamsoft2dbf.doc.Documents;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 @JacksonXmlRootElement(localName = "dokumenty")
 public class XmlDocuments {
@@ -41,6 +42,7 @@ public class XmlDocuments {
                 documents
                         .stream()
                         .map(xmlDocument -> xmlDocument.toDocument(cards.getCardMap()))
+                        .filter(Objects::nonNull)
                         .toList()
         );
     }
