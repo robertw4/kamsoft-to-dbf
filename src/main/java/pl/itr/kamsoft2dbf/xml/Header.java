@@ -63,7 +63,7 @@ public class Header {
         };
     }
 
-    public PaymentDeadline getPaymentDeatline() {
+    public PaymentDeadline getPaymentDeadline() {
         return paymentDeadline;
     }
 

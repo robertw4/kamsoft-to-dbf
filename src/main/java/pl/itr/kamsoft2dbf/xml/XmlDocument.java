@@ -11,13 +11,16 @@ import java.util.Optional;
 public class XmlDocument {
     @JacksonXmlProperty(localName = "naglowek")
     private final Header header;
+    @JacksonXmlProperty(localName = "podsumowanie-fk")
+    private final Summary summary;
 
-    public XmlDocument() {
-        this.header = null;
+    public XmlDocument(Header naglowek, Summary summary) {
+        this.header = naglowek;
+        this.summary = summary;
     }
 
-    public XmlDocument(Header naglowek) {
-        this.header = naglowek;
+    public XmlDocument() {
+        this(null, null);
     }
 
     public Document toDocument(Map<Integer, Card> cardMap) {
@@ -40,7 +43,8 @@ public class XmlDocument {
                         it.getDocumentDate(),
                         it.getFiscalDate(),
                         it.getPaymentDate(),
-                        it.getFiscal()
+                        it.getFiscal(),
+                        getInternalDocNo()
                 )).orElse(null);
     }
 
@@ -54,15 +58,22 @@ public class XmlDocument {
                         it.getDocumentDate(),
                         it.getFiscalDate(),
                         it.getPaymentDate(),
-                        it.getFiscal()
+                        it.getFiscal(),
+                        getInternalDocNo()
                 )).orElse(null);
     }
 
     private String getPaymentType() {
         return Optional.ofNullable(header)
-                .map(Header::getPaymentDeatline)
+                .map(Header::getPaymentDeadline)
                 .map(PaymentDeadline::getType).
                 orElse(null);
+    }
+
+    private String getInternalDocNo() {
+        return Optional.ofNullable(summary)
+                .map(Summary::getInternalDocNo)
+                .orElse(null);
     }
 
     @Override

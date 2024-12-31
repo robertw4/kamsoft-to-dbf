@@ -49,6 +49,8 @@ public class Dbf {
                 document.getPaymentDate(),
                 document.getFiscal(),
                 document.getDocNo(),
+                document.getInternalDocNo(),
+                document.getInternalDocNo(),
                 document.getContractorName(),
                 document.getVatId()
         };
@@ -64,7 +66,8 @@ public class Dbf {
                 row.getDate(DTA2.name()),
                 row.getDate(DTA3.name()),
                 row.getDate(DTA4.name()),
-                row.getString(NKNT.name())
+                row.getString(NKNT.name()),
+                row.getString(NDKR.name())
         );
     }
 }

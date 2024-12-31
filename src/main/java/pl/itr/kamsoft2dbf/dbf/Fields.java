@@ -18,6 +18,8 @@ public enum Fields {
     DTA4(DATE),
     NKNT(CHARACTER, 6),
     NRDOK(CHARACTER, 20),
+    NDKR(CHARACTER, 20),
+    NDAP(CHARACTER, 20),
     NZWK(CHARACTER, 100),
     NIPK(CHARACTER, 15);
 

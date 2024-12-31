@@ -25,6 +25,18 @@
         <data>2024-12-16</data>
       </termin-platnosci>
     </naglowek>
+    <podsumowanie-fk>
+      <cechy>
+        <cecha>
+          <symbol>fk-knt-nwbr</symbol>
+          <wartosc>859221</wartosc>
+        </cecha>
+        <cecha>
+          <symbol>fk-nr-pz</symbol>
+          <wartosc>778/2024/PZ</wartosc>
+        </cecha>
+      </cechy>
+    </podsumowanie-fk>
   </dokument>
   <dokument lp="2">
     <naglowek>
@@ -61,6 +73,18 @@
       </termin-platnosci>
       <status-fiskalny>P</status-fiskalny>
     </naglowek>
+    <podsumowanie-fk>
+      <cechy>
+        <cecha>
+          <symbol>fk-knt-numr</symbol>
+          <wartosc>1</wartosc>
+        </cecha>
+        <cecha>
+          <symbol>fk-nr-pz</symbol>
+          <wartosc>7304/2024/WZ</wartosc>
+        </cecha>
+      </cechy>
+    </podsumowanie-fk>
   </dokument>
   <dokument lp="5">
     <naglowek>

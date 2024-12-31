@@ -51,6 +51,7 @@ class MainTest {
             assertEquals("2024-11-02", dateToString(doc1.getFiscalDate()));
             assertEquals("2024-12-16", dateToString(doc1.getPaymentDate()));
             assertEquals("", doc1.getFiscal());
+            assertEquals("778/2024/PZ", doc1.getInternalDocNo());
 
             var doc2 = docs.getDocuments().get(1);
             assertEquals("100002", doc2.getDocNo());
@@ -62,6 +63,7 @@ class MainTest {
             assertEquals("2024-11-01", dateToString(doc2.getFiscalDate()));
             assertEquals("2024-12-01", dateToString(doc2.getPaymentDate()));
             assertEquals("", doc2.getFiscal());
+            assertEquals("", doc2.getInternalDocNo());
 
             var doc3 = docs.getDocuments().get(2);
             assertEquals("SBK 05.11.2024", doc3.getDocNo());
@@ -73,6 +75,7 @@ class MainTest {
             assertEquals("2024-11-05", dateToString(doc3.getFiscalDate()));
             assertEquals("2024-11-04", dateToString(doc3.getPaymentDate()));
             assertEquals("", doc3.getFiscal());
+            assertEquals("", doc3.getInternalDocNo());
 
             var doc4 = docs.getDocuments().get(3);
             assertEquals("76/2024", doc4.getDocNo());
@@ -84,6 +87,7 @@ class MainTest {
             assertEquals("2024-11-11", dateToString(doc4.getFiscalDate()));
             assertEquals("2024-12-16", dateToString(doc4.getPaymentDate()));
             assertEquals("1", doc4.getFiscal());
+            assertEquals("7304/2024/WZ", doc4.getInternalDocNo());
 
             var doc5 = docs.getDocuments().get(4);
             assertEquals("2660707383", doc5.getDocNo());
@@ -95,6 +99,7 @@ class MainTest {
             assertEquals("2024-11-28", dateToString(doc5.getFiscalDate()));
             assertEquals("2024-12-16", dateToString(doc5.getPaymentDate()));
             assertEquals("", doc5.getFiscal());
+            assertEquals("", doc5.getInternalDocNo());
 
             var doc6 = docs.getDocuments().get(5);
             assertEquals("KRF 21.11.2024", doc6.getDocNo());
@@ -106,6 +111,7 @@ class MainTest {
             assertNull(doc6.getFiscalDate());
             assertEquals("2024-11-29", dateToString(doc6.getPaymentDate()));
             assertEquals("", doc6.getFiscal());
+            assertEquals("", doc6.getInternalDocNo());
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
