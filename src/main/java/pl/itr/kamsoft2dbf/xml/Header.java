@@ -56,7 +56,11 @@ public class Header {
     }
 
     public String getDocNo() {
-        return docNo;
+        return switch (documentType) {
+            case "SBKB" -> "SBK " + dateToDocNo();
+            case "KRFF" -> "KRF " + dateToDocNo();
+            default -> docNo;
+        };
     }
 
     public PaymentDeadline getPaymentDeatline() {
@@ -89,7 +93,7 @@ public class Header {
         return Optional.ofNullable(paymentDeadline)
                 .map(PaymentDeadline::getPaymentDate)
                 .flatMap(this::parse)
-                .orElse(null);
+                .orElse(getDocumentDate());
     }
 
     public String getFiscal() {
@@ -104,6 +108,14 @@ public class Header {
                 .map(LocalDate::parse)
                 .map(it -> it.atStartOfDay().atZone(ZoneId.of("Z")).toInstant())
                 .map(Date::from);
+    }
+
+    private String dateToDocNo() {
+        return String.join(".",
+                docNo.substring(6, 8),
+                docNo.substring(4, 6),
+                docNo.substring(0, 4)
+        );
     }
 
     @Override

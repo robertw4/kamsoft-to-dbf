@@ -64,14 +64,14 @@ class MainTest {
             assertEquals("", doc2.getFiscal());
 
             var doc3 = docs.getDocuments().get(2);
-            assertEquals("100003", doc3.getDocNo());
+            assertEquals("SBK 05.11.2024", doc3.getDocNo());
             assertEquals("", doc3.getVatId());
             assertEquals("", doc3.getContractorName());
             assertEquals("D", doc3.getPaymentDeadlineType());
             assertEquals("SBK", doc3.getDocumentType());
             assertEquals("2024-11-04", dateToString(doc3.getDocumentDate()));
             assertEquals("2024-11-05", dateToString(doc3.getFiscalDate()));
-            assertNull(doc3.getPaymentDate());
+            assertEquals("2024-11-04", dateToString(doc3.getPaymentDate()));
             assertEquals("", doc3.getFiscal());
 
             var doc4 = docs.getDocuments().get(3);
@@ -97,14 +97,14 @@ class MainTest {
             assertEquals("", doc5.getFiscal());
 
             var doc6 = docs.getDocuments().get(5);
-            assertEquals("20241121", doc6.getDocNo());
+            assertEquals("KRF 21.11.2024", doc6.getDocNo());
             assertEquals("", doc6.getVatId());
             assertEquals("", doc6.getContractorName());
             assertEquals("D", doc6.getPaymentDeadlineType());
             assertEquals("KRF", doc6.getDocumentType());
             assertEquals("2024-11-29", dateToString(doc6.getDocumentDate()));
             assertNull(doc6.getFiscalDate());
-            assertNull(doc6.getPaymentDate());
+            assertEquals("2024-11-29", dateToString(doc6.getPaymentDate()));
             assertEquals("", doc6.getFiscal());
 
         } catch (FileNotFoundException e) {
