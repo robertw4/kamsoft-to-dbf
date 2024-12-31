@@ -5,6 +5,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import java.util.List;
+import java.util.Optional;
 
 @JacksonXmlRootElement(localName = "cechy")
 public class Features {
@@ -20,10 +21,10 @@ public class Features {
         this(null);
     }
 
-    public String getInternalDocNo() {
+    public Optional<String> getInternalDocNo() {
         return features.stream()
                 .filter(it -> it.getId().equals("fk-nr-pz"))
-                .findFirst().map(Feature::getValue)
-                .orElse(null);
+                .findFirst()
+                .map(Feature::getValue);
     }
 }

@@ -18,9 +18,8 @@ public class Summary {
         this(null);
     }
 
-    public String getInternalDocNo() {
+    public Optional<String> getInternalDocNo() {
         return Optional.ofNullable(features)
-                .map(Features::getInternalDocNo)
-                .orElse(null);
+                .flatMap(Features::getInternalDocNo);
     }
 }

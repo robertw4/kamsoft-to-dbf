@@ -72,7 +72,7 @@ public class XmlDocument {
 
     private String getInternalDocNo() {
         return Optional.ofNullable(summary)
-                .map(Summary::getInternalDocNo)
+                .flatMap(Summary::getInternalDocNo)
                 .orElse(null);
     }
 
