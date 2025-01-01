@@ -13,6 +13,7 @@ public class Document {
     private final Date paymentDate;
     private final String fiscal;
     private final String internalDocNo;
+    private final String internalId;
 
     public Document(String contractorName,
                     String vatId,
@@ -20,7 +21,10 @@ public class Document {
                     String paymentDeadlineType,
                     String documentType,
                     Date documentDate,
-                    Date fiscalDate, Date paymentDate, String fiscal, String internalDocNo
+                    Date fiscalDate, Date paymentDate,
+                    String fiscal,
+                    String internalDocNo,
+                    String internalId
     ) {
         this.contractorName = contractorName;
         this.vatId = vatId;
@@ -32,6 +36,7 @@ public class Document {
         this.paymentDate = paymentDate;
         this.fiscal = fiscal;
         this.internalDocNo = internalDocNo;
+        this.internalId = internalId;
     }
 
     public Document(
@@ -41,7 +46,8 @@ public class Document {
             Date documentDate,
             Date fiscalDate,
             Date paymentDate,
-            String fiscal, String internalDocNo
+            String fiscal, String internalDocNo,
+            String internalId
     ) {
         this(null,
                 null,
@@ -51,7 +57,8 @@ public class Document {
                 documentDate,
                 fiscalDate,
                 paymentDate,
-                fiscal, internalDocNo
+                fiscal, internalDocNo,
+                internalId
         );
     }
 
@@ -102,5 +109,9 @@ public class Document {
 
     public String getInternalDocNo() {
         return internalDocNo;
+    }
+
+    public String getInternalId() {
+        return internalId;
     }
 }

@@ -15,6 +15,7 @@
   </kartoteki>
   <dokument lp="1">
     <naglowek>
+      <wewn-ident>DOKF27305</wewn-ident>
       <kontrahent>1</kontrahent>
       <nr-dokumentu>100001</nr-dokumentu>
       <typ-dokumentu>FZ</typ-dokumentu>
@@ -40,6 +41,7 @@
   </dokument>
   <dokument lp="2">
     <naglowek>
+      <wewn-ident>DOKF27315</wewn-ident>
       <kontrahent>2</kontrahent>
       <nr-dokumentu>100002</nr-dokumentu>
       <typ-dokumentu>FZ</typ-dokumentu>
@@ -53,6 +55,7 @@
   </dokument>
   <dokument lp="3">
     <naglowek>
+      <wewn-ident>SBKB20241105</wewn-ident>
       <nr-dokumentu>20241105</nr-dokumentu>
       <typ-dokumentu>SBKB</typ-dokumentu>
       <data-wystawienia>2024-11-04</data-wystawienia>
@@ -62,6 +65,7 @@
   </dokument>
   <dokument lp="4">
     <naglowek>
+      <wewn-ident>DOKF27318</wewn-ident>
       <kontrahent>3</kontrahent>
       <nr-dokumentu>76/2024</nr-dokumentu>
       <typ-dokumentu>FS</typ-dokumentu>
@@ -88,6 +92,7 @@
   </dokument>
   <dokument lp="5">
     <naglowek>
+      <wewn-ident>DOKF27371</wewn-ident>
       <kontrahent>2</kontrahent>
       <nr-dokumentu>2660707383</nr-dokumentu>
       <typ-dokumentu>KFZ</typ-dokumentu>
@@ -101,6 +106,7 @@
   </dokument>
   <dokument lp="6">
     <naglowek>
+      <wewn-ident>KRFF20241105</wewn-ident>
       <nr-dokumentu>20241121</nr-dokumentu>
       <typ-dokumentu>KRFF</typ-dokumentu>
       <data-wystawienia>2024-11-29</data-wystawienia>
@@ -109,6 +115,7 @@
   </dokument>
   <dokument lp="7">
     <naglowek>
+      <wewn-ident>KRFF20241105</wewn-ident>
       <nr-dokumentu>20241104</nr-dokumentu>
       <typ-dokumentu>SBKF</typ-dokumentu>
       <data-wystawienia>2024-11-04</data-wystawienia>

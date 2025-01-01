@@ -51,6 +51,8 @@ public class Dbf {
                 document.getDocNo(),
                 document.getInternalDocNo(),
                 document.getInternalDocNo(),
+                null,
+                document.getInternalId(),
                 document.getContractorName(),
                 document.getVatId()
         };
@@ -60,14 +62,15 @@ public class Dbf {
         return new Document(
                 row.getString(NZWK.name()),
                 row.getString(NIPK.name()),
-                row.getString(NRDOK.name()),
+                row.getString(NDOK.name()),
                 row.getString(TYPR.name()),
                 row.getString(TYPD.name()),
                 row.getDate(DTA2.name()),
                 row.getDate(DTA3.name()),
                 row.getDate(DTA4.name()),
                 row.getString(NKNT.name()),
-                row.getString(NDKR.name())
+                row.getString(NDKR.name()),
+                row.getString(OSID.name())
         );
     }
 }

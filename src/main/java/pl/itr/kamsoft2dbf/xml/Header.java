@@ -26,6 +26,8 @@ public class Header {
     private final String saleDate;
     @JacksonXmlProperty(localName = "status-fiskalny")
     private final String fiscal;
+    @JacksonXmlProperty(localName = "wewn-ident")
+    private final String internalId;
 
     public Header(
             Integer contractor,
@@ -35,7 +37,7 @@ public class Header {
             String documentDate,
             String recipientDate,
             String saleDate,
-            String fiscal
+            String fiscal, String internalId
     ) {
         this.contractor = contractor;
         this.docNo = docNo;
@@ -45,10 +47,11 @@ public class Header {
         this.recipientDate = recipientDate;
         this.saleDate = saleDate;
         this.fiscal = fiscal;
+        this.internalId = internalId;
     }
 
     public Header() {
-        this(null, null, null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null, null, null);
     }
 
     public Integer getContractor() {
@@ -116,6 +119,10 @@ public class Header {
                 docNo.substring(4, 6),
                 docNo.substring(0, 4)
         );
+    }
+
+    public String getInternalId() {
+        return internalId;
     }
 
     @Override

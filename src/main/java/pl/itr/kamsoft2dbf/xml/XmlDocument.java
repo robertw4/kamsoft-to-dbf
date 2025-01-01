@@ -44,7 +44,8 @@ public class XmlDocument {
                         it.getFiscalDate(),
                         it.getPaymentDate(),
                         it.getFiscal(),
-                        getInternalDocNo()
+                        getInternalDocNo(),
+                        it.getInternalId()
                 )).orElse(null);
     }
 
@@ -59,7 +60,8 @@ public class XmlDocument {
                         it.getFiscalDate(),
                         it.getPaymentDate(),
                         it.getFiscal(),
-                        getInternalDocNo()
+                        getInternalDocNo(),
+                        it.getInternalId()
                 )).orElse(null);
     }
 
