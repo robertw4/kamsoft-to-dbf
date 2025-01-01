@@ -2,6 +2,7 @@ package pl.itr.kamsoft2dbf.xml;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import pl.itr.kamsoft2dbf.doc.Amount;
 import pl.itr.kamsoft2dbf.doc.Document;
 
 import java.util.Map;
@@ -45,7 +46,8 @@ public class XmlDocument {
                         it.getPaymentDate(),
                         it.getFiscal(),
                         getInternalDocNo(),
-                        it.getInternalId()
+                        it.getInternalId(),
+                        getPurchaceAmount()
                 )).orElse(null);
     }
 
@@ -61,7 +63,8 @@ public class XmlDocument {
                         it.getPaymentDate(),
                         it.getFiscal(),
                         getInternalDocNo(),
-                        it.getInternalId()
+                        it.getInternalId(),
+                        getPurchaceAmount()
                 )).orElse(null);
     }
 
@@ -76,6 +79,10 @@ public class XmlDocument {
         return Optional.ofNullable(summary)
                 .flatMap(Summary::getInternalDocNo)
                 .orElse(null);
+    }
+
+    private Amount getPurchaceAmount() {
+        return Optional.ofNullable(summary).map(Summary::getPurchaceAmount).orElse(null);
     }
 
     @Override

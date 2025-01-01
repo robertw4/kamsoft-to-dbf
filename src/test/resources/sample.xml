@@ -27,6 +27,20 @@
       </termin-platnosci>
     </naglowek>
     <podsumowanie-fk>
+      <kwoty>
+        <kwota>
+          <symbol>kwd-netto-zakupu</symbol>
+          <wartosc>18.82</wartosc>
+        </kwota>
+        <kwota>
+          <symbol>kwd-vat-zakupu</symbol>
+          <wartosc>1.51</wartosc>
+        </kwota>
+        <kwota>
+          <symbol>kwd-brutto-zakupu</symbol>
+          <wartosc>20.33</wartosc>
+        </kwota>
+      </kwoty>
       <cechy>
         <cecha>
           <symbol>fk-knt-nwbr</symbol>

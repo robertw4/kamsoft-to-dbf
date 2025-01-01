@@ -1,6 +1,7 @@
 package pl.itr.kamsoft2dbf.doc;
 
 import java.util.Date;
+import java.util.Optional;
 
 public class Document {
     private final String contractorName;
@@ -14,6 +15,7 @@ public class Document {
     private final String fiscal;
     private final String internalDocNo;
     private final String internalId;
+    private final Amount purchaceAmount;
 
     public Document(String contractorName,
                     String vatId,
@@ -24,7 +26,8 @@ public class Document {
                     Date fiscalDate, Date paymentDate,
                     String fiscal,
                     String internalDocNo,
-                    String internalId
+                    String internalId,
+                    Amount purchaceAmount
     ) {
         this.contractorName = contractorName;
         this.vatId = vatId;
@@ -37,6 +40,7 @@ public class Document {
         this.fiscal = fiscal;
         this.internalDocNo = internalDocNo;
         this.internalId = internalId;
+        this.purchaceAmount = purchaceAmount;
     }
 
     public Document(
@@ -46,8 +50,10 @@ public class Document {
             Date documentDate,
             Date fiscalDate,
             Date paymentDate,
-            String fiscal, String internalDocNo,
-            String internalId
+            String fiscal,
+            String internalDocNo,
+            String internalId,
+            Amount purchaceAmount
     ) {
         this(null,
                 null,
@@ -58,7 +64,7 @@ public class Document {
                 fiscalDate,
                 paymentDate,
                 fiscal, internalDocNo,
-                internalId
+                internalId, purchaceAmount
         );
     }
 
@@ -98,6 +104,18 @@ public class Document {
         return fiscal;
     }
 
+    public String getInternalDocNo() {
+        return internalDocNo;
+    }
+
+    public String getInternalId() {
+        return internalId;
+    }
+
+    public Optional<Amount> getPurchaceAmount() {
+        return Optional.ofNullable(purchaceAmount);
+    }
+
     @Override
     public String toString() {
         return "Document{" +
@@ -105,13 +123,5 @@ public class Document {
                 ", vatId='" + vatId + '\'' +
                 ", docNo='" + docNo + '\'' +
                 '}';
-    }
-
-    public String getInternalDocNo() {
-        return internalDocNo;
-    }
-
-    public String getInternalId() {
-        return internalId;
     }
 }

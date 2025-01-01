@@ -3,6 +3,7 @@ package pl.itr.kamsoft2dbf.dbf;
 import com.linuxense.javadbf.DBFReader;
 import com.linuxense.javadbf.DBFRow;
 import com.linuxense.javadbf.DBFWriter;
+import pl.itr.kamsoft2dbf.doc.Amount;
 import pl.itr.kamsoft2dbf.doc.Document;
 import pl.itr.kamsoft2dbf.doc.Documents;
 
@@ -63,6 +64,9 @@ public class Dbf {
                 0.0,
                 0.0,
                 0.0,
+                document.getPurchaceAmount().map(Amount::getBrutto).orElse(null),
+                document.getPurchaceAmount().map(Amount::getNetto).orElse(null),
+                document.getPurchaceAmount().map(Amount::getVat).orElse(null),
                 document.getContractorName(),
                 document.getVatId()
         };
@@ -80,7 +84,8 @@ public class Dbf {
                 row.getDate(DTA4.name()),
                 row.getString(NKNT.name()),
                 row.getString(NDKR.name()),
-                row.getString(OSID.name())
+                row.getString(OSID.name()),
+                new Amount(row.getBigDecimal(P11.name()), row.getBigDecimal(P12.name()), row.getBigDecimal(P13.name()))
         );
     }
 }

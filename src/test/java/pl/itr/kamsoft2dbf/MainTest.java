@@ -3,10 +3,12 @@ package pl.itr.kamsoft2dbf;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.itr.kamsoft2dbf.dbf.Dbf;
+import pl.itr.kamsoft2dbf.doc.Amount;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.math.BigDecimal;
 import java.time.ZoneId;
 import java.util.Date;
 
@@ -53,6 +55,9 @@ class MainTest {
             assertEquals("", doc1.getFiscal());
             assertEquals("778/2024/PZ", doc1.getInternalDocNo());
             assertEquals("DOKF27305", doc1.getInternalId());
+            assertEquals(new BigDecimal("18.82"), doc1.getPurchaceAmount().map(Amount::getNetto).get());
+            assertEquals(new BigDecimal("20.33"), doc1.getPurchaceAmount().map(Amount::getBrutto).get());
+            assertEquals(new BigDecimal("1.51"), doc1.getPurchaceAmount().map(Amount::getVat).get());
 
             var doc2 = docs.getDocuments().get(1);
             assertEquals("100002", doc2.getDocNo());
