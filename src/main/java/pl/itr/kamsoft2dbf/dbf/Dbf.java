@@ -53,6 +53,16 @@ public class Dbf {
                 document.getInternalDocNo(),
                 null,
                 document.getInternalId(),
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
                 document.getContractorName(),
                 document.getVatId()
         };

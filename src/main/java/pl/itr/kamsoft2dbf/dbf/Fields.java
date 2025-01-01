@@ -5,8 +5,7 @@ import com.linuxense.javadbf.DBFField;
 
 import java.util.Arrays;
 
-import static com.linuxense.javadbf.DBFDataType.CHARACTER;
-import static com.linuxense.javadbf.DBFDataType.DATE;
+import static com.linuxense.javadbf.DBFDataType.*;
 
 public enum Fields {
     TYPK(CHARACTER, 1),
@@ -22,19 +21,35 @@ public enum Fields {
     NDAP(CHARACTER, 20),
     OPIS(CHARACTER, 50),
     OSID(CHARACTER, 23),
+    PO1(NUMERIC, 13, 2),
+    PO2(NUMERIC, 13, 2),
+    PO3(NUMERIC, 13, 2),
+    PO4(NUMERIC, 13, 2),
+    PO5(NUMERIC, 13, 2),
+    PO6(NUMERIC, 13, 2),
+    PO7(NUMERIC, 13, 2),
+    PO8(NUMERIC, 13, 2),
+    PO9(NUMERIC, 13, 2),
+    P10(NUMERIC, 13, 2),
     NZWK(CHARACTER, 100),
     NIPK(CHARACTER, 15);
 
     private final DBFDataType type;
     private final Integer length;
+    private final Integer precision;
 
-    Fields(DBFDataType type, Integer length) {
+    Fields(DBFDataType type, Integer length, Integer precision) {
         this.type = type;
         this.length = length;
+        this.precision = precision;
+    }
+
+    Fields(DBFDataType type, Integer length) {
+        this(type, length, 0);
     }
 
     Fields(DBFDataType type) {
-        this(type, 8);
+        this(type, 8, 0);
     }
 
     public static DBFField[] getFields() {
@@ -44,6 +59,6 @@ public enum Fields {
     }
 
     private DBFField toDBFField() {
-        return new DBFField(name(), type, length);
+        return new DBFField(name(), type, length, precision);
     }
 }
