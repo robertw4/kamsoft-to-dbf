@@ -55,9 +55,9 @@ class MainTest {
             assertEquals("", doc1.getFiscal());
             assertEquals("778/2024/PZ", doc1.getInternalDocNo());
             assertEquals("DOKF27305", doc1.getInternalId());
-            assertEquals(new BigDecimal("18.82"), doc1.getPurchaceAmount().map(Amount::getNetto).get());
-            assertEquals(new BigDecimal("20.33"), doc1.getPurchaceAmount().map(Amount::getBrutto).get());
-            assertEquals(new BigDecimal("1.51"), doc1.getPurchaceAmount().map(Amount::getVat).get());
+            assertEquals(new BigDecimal("18.82"), doc1.getPurchaseAmount().map(Amount::getNetto).get());
+            assertEquals(new BigDecimal("20.33"), doc1.getPurchaseAmount().map(Amount::getBrutto).get());
+            assertEquals(new BigDecimal("1.51"), doc1.getPurchaseAmount().map(Amount::getVat).get());
 
             var doc2 = docs.getDocuments().get(1);
             assertEquals("100002", doc2.getDocNo());

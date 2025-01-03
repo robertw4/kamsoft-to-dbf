@@ -21,7 +21,7 @@ public class Features {
         this(null);
     }
 
-    public Optional<String> getInternalDocNo() {
+    protected Optional<String> getInternalDocNo() {
         return features.stream()
                 .filter(it -> it.getId().equals("fk-nr-pz"))
                 .findFirst()

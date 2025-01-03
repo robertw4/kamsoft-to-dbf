@@ -24,15 +24,15 @@ public class Amount {
         this(null, null, null);
     }
 
-    public String getId() {
+    protected String getId() {
         return id;
     }
 
-    public BigDecimal getValue() {
+    protected BigDecimal getValue() {
         return value;
     }
 
-    public String getVat() {
+    protected String getVat() {
         return vat;
     }
 }

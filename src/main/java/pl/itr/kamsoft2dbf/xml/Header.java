@@ -54,11 +54,11 @@ public class Header {
         this(null, null, null, null, null, null, null, null, null);
     }
 
-    public Integer getContractor() {
+    protected Integer getContractor() {
         return contractor;
     }
 
-    public String getDocNo() {
+    protected String getDocNo() {
         return switch (documentType) {
             case "SBKB" -> "SBK " + dateToDocNo();
             case "KRFF" -> "KRF " + dateToDocNo();
@@ -66,11 +66,11 @@ public class Header {
         };
     }
 
-    public PaymentDeadline getPaymentDeadline() {
+    protected PaymentDeadline getPaymentDeadline() {
         return paymentDeadline;
     }
 
-    public String toDocumentType() {
+    protected String toDocumentType() {
         return switch (documentType) {
             case "FZ" -> "FZV";
             case "SBKB" -> "SBK";
@@ -81,29 +81,33 @@ public class Header {
         };
     }
 
-    public Date getDocumentDate() {
+    protected Date getDocumentDate() {
         return parse(documentDate).orElse(null);
     }
 
-    public Date getFiscalDate() {
+    protected Date getFiscalDate() {
         return parse(recipientDate)
                 .orElse(parse(saleDate)
                         .orElse(null)
                 );
     }
 
-    public Date getPaymentDate() {
+    protected Date getPaymentDate() {
         return Optional.ofNullable(paymentDeadline)
                 .map(PaymentDeadline::getPaymentDate)
                 .flatMap(this::parse)
                 .orElse(getDocumentDate());
     }
 
-    public String getFiscal() {
+    protected String getFiscal() {
         return Optional.ofNullable(fiscal)
                 .filter(it -> it.equals("P"))
                 .map(it -> "1")
                 .orElse(null);
+    }
+
+    protected String getInternalId() {
+        return internalId;
     }
 
     private Optional<Date> parse(String date) {
@@ -119,10 +123,6 @@ public class Header {
                 docNo.substring(4, 6),
                 docNo.substring(0, 4)
         );
-    }
-
-    public String getInternalId() {
-        return internalId;
     }
 
     @Override

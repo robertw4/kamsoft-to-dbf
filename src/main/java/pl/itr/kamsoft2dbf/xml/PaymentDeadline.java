@@ -19,11 +19,11 @@ public class PaymentDeadline {
         this(null, null);
     }
 
-    public String getType() {
+    protected String getType() {
         return type;
     }
 
-    public String getPaymentDate() {
+    protected String getPaymentDate() {
         return paymentDate;
     }
 }

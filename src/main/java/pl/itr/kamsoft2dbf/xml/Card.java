@@ -28,19 +28,15 @@ public class Card {
         this(null, null, null, null);
     }
 
-    public Integer getId() {
+    protected Integer getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getVatId() {
+    protected String getVatId() {
         return vatId;
     }
 
-    public String getFullName() {
+    protected String getFullName() {
         return String.join(
                 " ",
                 Stream.of(name, name2).filter(Objects::nonNull).toList()

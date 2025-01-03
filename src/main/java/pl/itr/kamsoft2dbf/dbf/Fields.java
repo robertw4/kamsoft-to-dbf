@@ -55,7 +55,7 @@ public enum Fields {
         this(type, 8, 0);
     }
 
-    public static DBFField[] getFields() {
+    static DBFField[] getFields() {
         return Arrays.stream(Fields.values())
                 .map(Fields::toDBFField)
                 .toArray(DBFField[]::new);

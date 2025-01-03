@@ -32,7 +32,7 @@ public class Cards {
                 '}';
     }
 
-    public Map<Integer, Card> getCardMap() {
+    protected Map<Integer, Card> getCardMap() {
         return cards.stream().collect(toMap(Card::getId, identity()));
     }
 }

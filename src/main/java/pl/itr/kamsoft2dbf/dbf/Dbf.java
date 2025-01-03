@@ -64,9 +64,9 @@ public class Dbf {
                 0.0,
                 0.0,
                 0.0,
-                document.getPurchaceAmount().map(Amount::getBrutto).orElse(null),
-                document.getPurchaceAmount().map(Amount::getNetto).orElse(null),
-                document.getPurchaceAmount().map(Amount::getVat).orElse(null),
+                document.getPurchaseAmount().map(Amount::getBrutto).orElse(null),
+                document.getPurchaseAmount().map(Amount::getNetto).orElse(null),
+                document.getPurchaseAmount().map(Amount::getVat).orElse(null),
                 document.getContractorName(),
                 document.getVatId()
         };

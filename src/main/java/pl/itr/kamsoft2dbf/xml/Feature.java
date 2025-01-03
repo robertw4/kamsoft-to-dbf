@@ -19,11 +19,11 @@ public class Feature {
         this(null, null);
     }
 
-    public String getId() {
+    protected String getId() {
         return id;
     }
 
-    public String getValue() {
+    protected String getValue() {
         return value;
     }
 }

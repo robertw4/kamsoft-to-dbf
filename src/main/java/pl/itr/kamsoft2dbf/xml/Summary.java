@@ -22,12 +22,12 @@ public class Summary {
         this(null, null);
     }
 
-    public Optional<String> getInternalDocNo() {
+    protected Optional<String> getInternalDocNo() {
         return Optional.ofNullable(features)
                 .flatMap(Features::getInternalDocNo);
     }
 
-    public Amount getPurchaceAmount() {
+    protected Amount getPurchaceAmount() {
         return Optional.ofNullable(amounts)
                 .map(Amounts::getPurchaceAmount)
                 .orElse(null);

@@ -24,7 +24,7 @@ public class XmlDocument {
         this(null, null);
     }
 
-    public Document toDocument(Map<Integer, Card> cardMap) {
+    protected Document toDocument(Map<Integer, Card> cardMap) {
         return Optional.ofNullable(header)
                 .map(Header::getContractor)
                 .map(cardMap::get)

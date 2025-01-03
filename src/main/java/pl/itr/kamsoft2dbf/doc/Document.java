@@ -112,7 +112,7 @@ public class Document {
         return internalId;
     }
 
-    public Optional<Amount> getPurchaceAmount() {
+    public Optional<Amount> getPurchaseAmount() {
         return Optional.ofNullable(purchaceAmount);
     }
 
