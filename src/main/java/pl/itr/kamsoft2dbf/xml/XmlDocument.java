@@ -47,6 +47,8 @@ public class XmlDocument {
                         it.getFiscal(),
                         getInternalDocNo(),
                         it.getInternalId(),
+                        getTransactionAmount(),
+                        getRetailAmount(),
                         getPurchaceAmount()
                 )).orElse(null);
     }
@@ -64,6 +66,8 @@ public class XmlDocument {
                         it.getFiscal(),
                         getInternalDocNo(),
                         it.getInternalId(),
+                        getTransactionAmount(),
+                        getRetailAmount(),
                         getPurchaceAmount()
                 )).orElse(null);
     }
@@ -81,9 +85,18 @@ public class XmlDocument {
                 .orElse(null);
     }
 
+    private Amount getTransactionAmount() {
+        return Optional.ofNullable(summary).map(Summary::getTransactionAmount).orElse(null);
+    }
+
+    private Amount getRetailAmount() {
+        return Optional.ofNullable(summary).map(Summary::getRetailAmount).orElse(null);
+    }
+
     private Amount getPurchaceAmount() {
         return Optional.ofNullable(summary).map(Summary::getPurchaceAmount).orElse(null);
     }
+
 
     @Override
     public String toString() {

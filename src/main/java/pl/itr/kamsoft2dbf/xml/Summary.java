@@ -27,9 +27,22 @@ public class Summary {
                 .flatMap(Features::getInternalDocNo);
     }
 
+    protected Amount getTransactionAmount() {
+        return Optional.ofNullable(amounts)
+                .map(Amounts::getTransactionAmount)
+                .orElse(null);
+    }
+
+    protected Amount getRetailAmount() {
+        return Optional.ofNullable(amounts)
+                .map(Amounts::getRetailAmount)
+                .orElse(null);
+    }
+
     protected Amount getPurchaceAmount() {
         return Optional.ofNullable(amounts)
                 .map(Amounts::getPurchaceAmount)
                 .orElse(null);
     }
+
 }

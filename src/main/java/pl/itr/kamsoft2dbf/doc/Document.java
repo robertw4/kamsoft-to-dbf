@@ -15,7 +15,8 @@ public class Document {
     private final String fiscal;
     private final String internalDocNo;
     private final String internalId;
-    private final Amount purchaceAmount;
+    private final Amount transactionAmount;
+    private final Amount retailAmount;
 
     public Document(String contractorName,
                     String vatId,
@@ -27,6 +28,8 @@ public class Document {
                     String fiscal,
                     String internalDocNo,
                     String internalId,
+                    Amount transactionAmount,
+                    Amount retailAmount,
                     Amount purchaceAmount
     ) {
         this.contractorName = contractorName;
@@ -40,7 +43,8 @@ public class Document {
         this.fiscal = fiscal;
         this.internalDocNo = internalDocNo;
         this.internalId = internalId;
-        this.purchaceAmount = purchaceAmount;
+        this.transactionAmount = transactionAmount;
+        this.retailAmount = isPurchaseDocument(documentType) ? retailAmount : purchaceAmount;
     }
 
     public Document(
@@ -53,7 +57,9 @@ public class Document {
             String fiscal,
             String internalDocNo,
             String internalId,
-            Amount purchaceAmount
+            Amount transactionAmount,
+            Amount retailAmount,
+            Amount purchaseAmount
     ) {
         this(null,
                 null,
@@ -64,7 +70,10 @@ public class Document {
                 fiscalDate,
                 paymentDate,
                 fiscal, internalDocNo,
-                internalId, purchaceAmount
+                internalId,
+                transactionAmount,
+                retailAmount,
+                purchaseAmount
         );
     }
 
@@ -112,8 +121,20 @@ public class Document {
         return internalId;
     }
 
-    public Optional<Amount> getPurchaseAmount() {
-        return Optional.ofNullable(purchaceAmount);
+    public Optional<Amount> getTransactionAmount() {
+        return Optional.ofNullable(transactionAmount);
+    }
+
+    public Optional<Amount> getRetailAmount() {
+        return Optional.ofNullable(retailAmount);
+    }
+
+    private Boolean isPurchaseDocument(String type) {
+        return switch (type) {
+            case "FZV" -> true;
+            case "KZV" -> true;
+            default -> false;
+        };
     }
 
     @Override

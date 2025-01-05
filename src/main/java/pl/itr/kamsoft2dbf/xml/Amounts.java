@@ -21,6 +21,22 @@ public class Amounts {
         this(null);
     }
 
+    protected pl.itr.kamsoft2dbf.doc.Amount getTransactionAmount() {
+        return new pl.itr.kamsoft2dbf.doc.Amount(
+                getValue("kwd-brutto-transakcji"),
+                getValue("kwd-netto-transakcji"),
+                getValue("kwd-vat-transakcji")
+        );
+    }
+
+    protected pl.itr.kamsoft2dbf.doc.Amount getRetailAmount() {
+        return new pl.itr.kamsoft2dbf.doc.Amount(
+                getValue("kwd-brutto-det"),
+                getValue("kwd-netto-det"),
+                getValue("kwd-vat-det")
+        );
+    }
+
     protected pl.itr.kamsoft2dbf.doc.Amount getPurchaceAmount() {
         return new pl.itr.kamsoft2dbf.doc.Amount(
                 getValue("kwd-brutto-zakupu"),

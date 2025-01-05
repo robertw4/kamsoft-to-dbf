@@ -55,9 +55,12 @@ class MainTest {
             assertEquals("", doc1.getFiscal());
             assertEquals("778/2024/PZ", doc1.getInternalDocNo());
             assertEquals("DOKF27305", doc1.getInternalId());
-            assertEquals(new BigDecimal("18.82"), doc1.getPurchaseAmount().map(Amount::getNetto).get());
-            assertEquals(new BigDecimal("20.33"), doc1.getPurchaseAmount().map(Amount::getBrutto).get());
-            assertEquals(new BigDecimal("1.51"), doc1.getPurchaseAmount().map(Amount::getVat).get());
+            assertEquals(new BigDecimal("18.82"), doc1.getTransactionAmount().map(Amount::getNetto).get());
+            assertEquals(new BigDecimal("20.33"), doc1.getTransactionAmount().map(Amount::getBrutto).get());
+            assertEquals(new BigDecimal("1.51"), doc1.getTransactionAmount().map(Amount::getVat).get());
+            assertEquals(new BigDecimal("26.35"), doc1.getRetailAmount().map(Amount::getNetto).get());
+            assertEquals(new BigDecimal("28.46"), doc1.getRetailAmount().map(Amount::getBrutto).get());
+            assertEquals(new BigDecimal("2.11"), doc1.getRetailAmount().map(Amount::getVat).get());
 
             var doc2 = docs.getDocuments().get(1);
             assertEquals("100002", doc2.getDocNo());
@@ -97,6 +100,12 @@ class MainTest {
             assertEquals("1", doc4.getFiscal());
             assertEquals("7304/2024/WZ", doc4.getInternalDocNo());
             assertEquals("DOKF27318", doc4.getInternalId());
+            assertEquals(new BigDecimal("45.33"), doc4.getTransactionAmount().map(Amount::getNetto).get());
+            assertEquals(new BigDecimal("48.96"), doc4.getTransactionAmount().map(Amount::getBrutto).get());
+            assertEquals(new BigDecimal("3.63"), doc4.getTransactionAmount().map(Amount::getVat).get());
+            assertEquals(new BigDecimal("39.99"), doc4.getRetailAmount().map(Amount::getNetto).get());
+            assertEquals(new BigDecimal("43.19"), doc4.getRetailAmount().map(Amount::getBrutto).get());
+            assertEquals(new BigDecimal("3.20"), doc4.getRetailAmount().map(Amount::getVat).get());
 
             var doc5 = docs.getDocuments().get(4);
             assertEquals("2660707383", doc5.getDocNo());

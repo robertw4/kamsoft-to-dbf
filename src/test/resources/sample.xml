@@ -29,6 +29,30 @@
     <podsumowanie-fk>
       <kwoty>
         <kwota>
+          <symbol>kwd-netto-transakcji</symbol>
+          <wartosc>18.82</wartosc>
+        </kwota>
+        <kwota>
+          <symbol>kwd-vat-transakcji</symbol>
+          <wartosc>1.51</wartosc>
+        </kwota>
+        <kwota>
+          <symbol>kwd-brutto-transakcji</symbol>
+          <wartosc>20.33</wartosc>
+        </kwota>
+        <kwota>
+          <symbol>kwd-netto-det</symbol>
+          <wartosc>26.35</wartosc>
+        </kwota>
+        <kwota>
+          <symbol>kwd-vat-det</symbol>
+          <wartosc>2.11</wartosc>
+        </kwota>
+        <kwota>
+          <symbol>kwd-brutto-det</symbol>
+          <wartosc>28.46</wartosc>
+        </kwota>
+        <kwota>
           <symbol>kwd-netto-zakupu</symbol>
           <wartosc>18.82</wartosc>
         </kwota>
@@ -92,6 +116,44 @@
       <status-fiskalny>P</status-fiskalny>
     </naglowek>
     <podsumowanie-fk>
+      <kwoty>
+        <kwota>
+          <symbol>kwd-netto-zakupu</symbol>
+          <wartosc>39.99</wartosc>
+        </kwota>
+        <kwota>
+          <symbol>kwd-vat-zakupu</symbol>
+          <wartosc>3.2</wartosc>
+        </kwota>
+        <kwota>
+          <symbol>kwd-brutto-zakupu</symbol>
+          <wartosc>43.19</wartosc>
+        </kwota>
+        <kwota>
+          <symbol>kwd-netto-transakcji</symbol>
+          <wartosc>45.33</wartosc>
+        </kwota>
+        <kwota>
+          <symbol>kwd-vat-transakcji</symbol>
+          <wartosc>3.63</wartosc>
+        </kwota>
+        <kwota>
+          <symbol>kwd-brutto-transakcji</symbol>
+          <wartosc>48.96</wartosc>
+        </kwota>
+        <kwota>
+          <symbol>kwd-netto-det</symbol>
+          <wartosc>45.33</wartosc>
+        </kwota>
+        <kwota>
+          <symbol>kwd-vat-det</symbol>
+          <wartosc>3.63</wartosc>
+        </kwota>
+        <kwota>
+          <symbol>kwd-brutto-det</symbol>
+          <wartosc>48.96</wartosc>
+        </kwota>
+      </kwoty>
       <cechy>
         <cecha>
           <symbol>fk-knt-numr</symbol>

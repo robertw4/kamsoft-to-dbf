@@ -64,9 +64,22 @@ public class Dbf {
                 0.0,
                 0.0,
                 0.0,
-                document.getPurchaseAmount().map(Amount::getBrutto).orElse(null),
-                document.getPurchaseAmount().map(Amount::getNetto).orElse(null),
-                document.getPurchaseAmount().map(Amount::getVat).orElse(null),
+                document.getTransactionAmount().map(Amount::getBrutto).orElse(null),
+                document.getTransactionAmount().map(Amount::getNetto).orElse(null),
+                document.getTransactionAmount().map(Amount::getVat).orElse(null),
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                document.getRetailAmount().map(Amount::getBrutto).orElse(null),
+                document.getRetailAmount().map(Amount::getNetto).orElse(null),
+                document.getRetailAmount().map(Amount::getVat).orElse(null),
                 document.getContractorName(),
                 document.getVatId()
         };
@@ -85,7 +98,9 @@ public class Dbf {
                 row.getString(NKNT.name()),
                 row.getString(NDKR.name()),
                 row.getString(OSID.name()),
-                new Amount(row.getBigDecimal(P11.name()), row.getBigDecimal(P12.name()), row.getBigDecimal(P13.name()))
+                new Amount(row.getBigDecimal(P11.name()), row.getBigDecimal(P12.name()), row.getBigDecimal(P13.name())),
+                new Amount(row.getBigDecimal(P24.name()), row.getBigDecimal(P25.name()), row.getBigDecimal(P26.name())),
+                new Amount(row.getBigDecimal(P24.name()), row.getBigDecimal(P25.name()), row.getBigDecimal(P26.name()))
         );
     }
 }
