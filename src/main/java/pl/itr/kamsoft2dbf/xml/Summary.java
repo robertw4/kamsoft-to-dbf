@@ -5,6 +5,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import pl.itr.kamsoft2dbf.doc.Amount;
 
 import java.util.Optional;
+import java.util.function.Function;
 
 @JacksonXmlRootElement(localName = "podsumowanie-fk")
 public class Summary {
@@ -27,21 +28,9 @@ public class Summary {
                 .flatMap(Features::getInternalDocNo);
     }
 
-    protected Amount getTransactionAmount() {
+    protected Amount getAmount(Function<Amounts, Amount> getter) {
         return Optional.ofNullable(amounts)
-                .map(Amounts::getTransactionAmount)
-                .orElse(null);
-    }
-
-    protected Amount getRetailAmount() {
-        return Optional.ofNullable(amounts)
-                .map(Amounts::getRetailAmount)
-                .orElse(null);
-    }
-
-    protected Amount getPurchaceAmount() {
-        return Optional.ofNullable(amounts)
-                .map(Amounts::getPurchaceAmount)
+                .map(getter)
                 .orElse(null);
     }
 

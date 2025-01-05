@@ -7,6 +7,7 @@ import pl.itr.kamsoft2dbf.doc.Document;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 
 @JacksonXmlRootElement(localName = "dokument")
 public class XmlDocument {
@@ -47,9 +48,9 @@ public class XmlDocument {
                         it.getFiscal(),
                         getInternalDocNo(),
                         it.getInternalId(),
-                        getTransactionAmount(),
-                        getRetailAmount(),
-                        getPurchaceAmount()
+                        getAmount(Amounts::getTransactionAmount),
+                        getAmount(Amounts::getRetailAmount),
+                        getAmount(Amounts::getPurchaseAmount)
                 )).orElse(null);
     }
 
@@ -66,9 +67,9 @@ public class XmlDocument {
                         it.getFiscal(),
                         getInternalDocNo(),
                         it.getInternalId(),
-                        getTransactionAmount(),
-                        getRetailAmount(),
-                        getPurchaceAmount()
+                        getAmount(Amounts::getTransactionAmount),
+                        getAmount(Amounts::getRetailAmount),
+                        getAmount(Amounts::getPurchaseAmount)
                 )).orElse(null);
     }
 
@@ -85,18 +86,11 @@ public class XmlDocument {
                 .orElse(null);
     }
 
-    private Amount getTransactionAmount() {
-        return Optional.ofNullable(summary).map(Summary::getTransactionAmount).orElse(null);
+    private Amount getAmount(Function<Amounts, Amount> getter) {
+        return Optional.ofNullable(summary)
+                .map(it -> it.getAmount(getter))
+                .orElse(null);
     }
-
-    private Amount getRetailAmount() {
-        return Optional.ofNullable(summary).map(Summary::getRetailAmount).orElse(null);
-    }
-
-    private Amount getPurchaceAmount() {
-        return Optional.ofNullable(summary).map(Summary::getPurchaceAmount).orElse(null);
-    }
-
 
     @Override
     public String toString() {

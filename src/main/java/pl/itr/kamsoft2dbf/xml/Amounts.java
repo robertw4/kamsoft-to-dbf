@@ -37,7 +37,7 @@ public class Amounts {
         );
     }
 
-    protected pl.itr.kamsoft2dbf.doc.Amount getPurchaceAmount() {
+    protected pl.itr.kamsoft2dbf.doc.Amount getPurchaseAmount() {
         return new pl.itr.kamsoft2dbf.doc.Amount(
                 getValue("kwd-brutto-zakupu"),
                 getValue("kwd-netto-zakupu"),
