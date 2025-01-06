@@ -47,7 +47,7 @@ public class Amounts {
 
     private BigDecimal getValue(String id) {
         return amounts.stream()
-                .filter(it -> it.getId().equals(id))
+                .filter(amount -> amount.getId().equals(id))
                 .findFirst()
                 .map(Amount::getValue)
                 .orElse(null);

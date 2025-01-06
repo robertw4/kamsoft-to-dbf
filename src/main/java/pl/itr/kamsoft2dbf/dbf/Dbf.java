@@ -87,8 +87,6 @@ public class Dbf {
 
     private static Document toDocument(DBFRow row) {
         return new Document(
-                row.getString(NZWK.name()),
-                row.getString(NIPK.name()),
                 row.getString(NDOK.name()),
                 row.getString(TYPR.name()),
                 row.getString(TYPD.name()),
@@ -100,7 +98,9 @@ public class Dbf {
                 row.getString(OSID.name()),
                 new Amount(row.getBigDecimal(P11.name()), row.getBigDecimal(P12.name()), row.getBigDecimal(P13.name())),
                 new Amount(row.getBigDecimal(P24.name()), row.getBigDecimal(P25.name()), row.getBigDecimal(P26.name())),
-                new Amount(row.getBigDecimal(P24.name()), row.getBigDecimal(P25.name()), row.getBigDecimal(P26.name()))
-        );
+                new Amount(row.getBigDecimal(P24.name()), row.getBigDecimal(P25.name()), row.getBigDecimal(P26.name())),
+                row.getString(NZWK.name()),
+                row.getString(NIPK.name())
+                );
     }
 }

@@ -23,7 +23,7 @@ public class Features {
 
     protected Optional<String> getInternalDocNo() {
         return features.stream()
-                .filter(it -> it.getId().equals("fk-nr-pz"))
+                .filter(feature -> feature.getId().equals("fk-nr-pz"))
                 .findFirst()
                 .map(Feature::getValue);
     }

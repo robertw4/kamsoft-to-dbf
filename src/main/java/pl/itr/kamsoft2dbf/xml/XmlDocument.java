@@ -29,48 +29,35 @@ public class XmlDocument {
         return Optional.ofNullable(header)
                 .map(Header::getContractor)
                 .map(cardMap::get)
-                .map(this::toDocument)
-                .orElse(toDocument());
+                .flatMap(this::toDocument)
+                .orElse(toDocument().orElse(null));
     }
 
-    private Document toDocument(Card card) {
-        return Optional.ofNullable(header)
-                .filter(it -> it.toDocumentType() != null)
-                .map(it -> new Document(
-                        card.getFullName(),
-                        card.getVatId(),
-                        it.getDocNo(),
-                        getPaymentType(),
-                        it.toDocumentType(),
-                        it.getDocumentDate(),
-                        it.getFiscalDate(),
-                        it.getPaymentDate(),
-                        it.getFiscal(),
-                        getInternalDocNo(),
-                        it.getInternalId(),
-                        getAmount(Amounts::getTransactionAmount),
-                        getAmount(Amounts::getRetailAmount),
-                        getAmount(Amounts::getPurchaseAmount)
-                )).orElse(null);
+    private Optional<Document> toDocument(Card card) {
+        return toDocument()
+                .map(document -> document.setContractorName(card.getFullName()))
+                .map(document -> document.setVatId(card.getVatId()));
     }
 
-    private Document toDocument() {
+    private Optional<Document> toDocument() {
         return Optional.ofNullable(header)
-                .filter(it -> it.toDocumentType() != null)
-                .map(it -> new Document(
-                        it.getDocNo(),
+                .filter(header -> header.toDocumentType() != null)
+                .map(header -> new Document(
+                        header.getDocNo(),
                         getPaymentType(),
-                        it.toDocumentType(),
-                        it.getDocumentDate(),
-                        it.getFiscalDate(),
-                        it.getPaymentDate(),
-                        it.getFiscal(),
+                        header.toDocumentType(),
+                        header.getDocumentDate(),
+                        header.getFiscalDate(),
+                        header.getPaymentDate(),
+                        header.getFiscal(),
                         getInternalDocNo(),
-                        it.getInternalId(),
+                        header.getInternalId(),
                         getAmount(Amounts::getTransactionAmount),
                         getAmount(Amounts::getRetailAmount),
-                        getAmount(Amounts::getPurchaseAmount)
-                )).orElse(null);
+                        getAmount(Amounts::getPurchaseAmount),
+                        null,
+                        null
+                ));
     }
 
     private String getPaymentType() {
@@ -88,7 +75,7 @@ public class XmlDocument {
 
     private Amount getAmount(Function<Amounts, Amount> getter) {
         return Optional.ofNullable(summary)
-                .map(it -> it.getAmount(getter))
+                .map(summary -> summary.getAmount(getter))
                 .orElse(null);
     }
 

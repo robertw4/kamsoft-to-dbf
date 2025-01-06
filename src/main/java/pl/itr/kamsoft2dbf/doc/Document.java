@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.Optional;
 
 public class Document {
-    private final String contractorName;
-    private final String vatId;
     private final String docNo;
     private final String paymentDeadlineType;
     private final String documentType;
@@ -17,23 +15,24 @@ public class Document {
     private final String internalId;
     private final Amount transactionAmount;
     private final Amount retailAmount;
+    private String contractorName;
+    private String vatId;
 
-    public Document(String contractorName,
-                    String vatId,
-                    String docNo,
-                    String paymentDeadlineType,
-                    String documentType,
-                    Date documentDate,
-                    Date fiscalDate, Date paymentDate,
-                    String fiscal,
-                    String internalDocNo,
-                    String internalId,
-                    Amount transactionAmount,
-                    Amount retailAmount,
-                    Amount purchaceAmount
+    public Document(
+            String docNo,
+            String paymentDeadlineType,
+            String documentType,
+            Date documentDate,
+            Date fiscalDate, Date paymentDate,
+            String fiscal,
+            String internalDocNo,
+            String internalId,
+            Amount transactionAmount,
+            Amount retailAmount,
+            Amount purchaceAmount,
+            String contractorName,
+            String vatId
     ) {
-        this.contractorName = contractorName;
-        this.vatId = vatId;
         this.docNo = docNo;
         this.paymentDeadlineType = paymentDeadlineType;
         this.documentType = documentType;
@@ -45,36 +44,8 @@ public class Document {
         this.internalId = internalId;
         this.transactionAmount = transactionAmount;
         this.retailAmount = isPurchaseDocument(documentType) ? retailAmount : purchaceAmount;
-    }
-
-    public Document(
-            String docNo,
-            String paymentDeadlineType,
-            String documentType,
-            Date documentDate,
-            Date fiscalDate,
-            Date paymentDate,
-            String fiscal,
-            String internalDocNo,
-            String internalId,
-            Amount transactionAmount,
-            Amount retailAmount,
-            Amount purchaseAmount
-    ) {
-        this(null,
-                null,
-                docNo,
-                paymentDeadlineType,
-                documentType,
-                documentDate,
-                fiscalDate,
-                paymentDate,
-                fiscal, internalDocNo,
-                internalId,
-                transactionAmount,
-                retailAmount,
-                purchaseAmount
-        );
+        this.contractorName = contractorName;
+        this.vatId = vatId;
     }
 
     public String getContractorName() {
@@ -127,6 +98,16 @@ public class Document {
 
     public Optional<Amount> getRetailAmount() {
         return Optional.ofNullable(retailAmount);
+    }
+
+    public Document setContractorName(String contractorName) {
+        this.contractorName = contractorName;
+        return this;
+    }
+
+    public Document setVatId(String vatId) {
+        this.vatId = vatId;
+        return this;
     }
 
     private Boolean isPurchaseDocument(String type) {
