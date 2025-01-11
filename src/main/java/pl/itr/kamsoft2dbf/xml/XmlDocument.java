@@ -4,6 +4,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import pl.itr.kamsoft2dbf.doc.Amount;
 import pl.itr.kamsoft2dbf.doc.Document;
+import pl.itr.kamsoft2dbf.doc.Vat;
 
 import java.util.Map;
 import java.util.Optional;
@@ -55,6 +56,7 @@ public class XmlDocument {
                         getAmount(Amounts::getTransactionAmount),
                         getAmount(Amounts::getRetailAmount),
                         getAmount(Amounts::getPurchaseAmount),
+                        getVatAmounts(),
                         null,
                         null
                 ));
@@ -77,6 +79,12 @@ public class XmlDocument {
         return Optional.ofNullable(summary)
                 .map(summary -> summary.getAmount(getter))
                 .orElse(null);
+    }
+
+    private Map<Vat, Amount> getVatAmounts() {
+        return Optional.ofNullable(summary)
+                .map(Summary::getVatAmounts)
+                .orElse(Map.of());
     }
 
     @Override

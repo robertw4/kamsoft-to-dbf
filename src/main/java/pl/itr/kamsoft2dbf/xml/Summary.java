@@ -3,7 +3,9 @@ package pl.itr.kamsoft2dbf.xml;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import pl.itr.kamsoft2dbf.doc.Amount;
+import pl.itr.kamsoft2dbf.doc.Vat;
 
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -34,4 +36,9 @@ public class Summary {
                 .orElse(null);
     }
 
+    protected Map<Vat, Amount> getVatAmounts() {
+        return Optional.ofNullable(amounts)
+                .map(Amounts::getVatAmounts)
+                .orElse(null);
+    }
 }

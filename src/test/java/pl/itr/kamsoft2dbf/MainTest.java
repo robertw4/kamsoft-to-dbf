@@ -14,6 +14,8 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static pl.itr.kamsoft2dbf.doc.Vat.VAT_23;
+import static pl.itr.kamsoft2dbf.doc.Vat.VAT_8;
 
 class MainTest {
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
@@ -61,6 +63,10 @@ class MainTest {
             assertEquals(new BigDecimal("26.35"), doc1.getRetailAmount().map(Amount::getNetto).get());
             assertEquals(new BigDecimal("28.46"), doc1.getRetailAmount().map(Amount::getBrutto).get());
             assertEquals(new BigDecimal("2.11"), doc1.getRetailAmount().map(Amount::getVat).get());
+            assertEquals(new BigDecimal("258.20"), doc1.getVatAmount(VAT_8).map(Amount::getNetto).get());
+            assertEquals(new BigDecimal("20.65"), doc1.getVatAmount(VAT_8).map(Amount::getVat).get());
+            assertEquals(new BigDecimal("9.03"), doc1.getVatAmount(VAT_23).map(Amount::getNetto).get());
+            assertEquals(new BigDecimal("2.08"), doc1.getVatAmount(VAT_23).map(Amount::getVat).get());
 
             var doc2 = docs.getDocuments().get(1);
             assertEquals("100002", doc2.getDocNo());

@@ -1,6 +1,7 @@
 package pl.itr.kamsoft2dbf.doc;
 
 import java.util.Date;
+import java.util.Map;
 import java.util.Optional;
 
 public class Document {
@@ -15,6 +16,7 @@ public class Document {
     private final String internalId;
     private final Amount transactionAmount;
     private final Amount retailAmount;
+    private final Map<Vat, Amount> vatAmounts;
     private String contractorName;
     private String vatId;
 
@@ -30,6 +32,7 @@ public class Document {
             Amount transactionAmount,
             Amount retailAmount,
             Amount purchaceAmount,
+            Map<Vat, Amount> vatAmounts,
             String contractorName,
             String vatId
     ) {
@@ -43,6 +46,7 @@ public class Document {
         this.internalDocNo = internalDocNo;
         this.internalId = internalId;
         this.transactionAmount = transactionAmount;
+        this.vatAmounts = vatAmounts;
         this.retailAmount = isPurchaseDocument(documentType) ? retailAmount : purchaceAmount;
         this.contractorName = contractorName;
         this.vatId = vatId;
@@ -98,6 +102,10 @@ public class Document {
 
     public Optional<Amount> getRetailAmount() {
         return Optional.ofNullable(retailAmount);
+    }
+
+    public Optional<Amount> getVatAmount(Vat vat) {
+        return Optional.ofNullable(vatAmounts.get(vat));
     }
 
     public Document setContractorName(String contractorName) {

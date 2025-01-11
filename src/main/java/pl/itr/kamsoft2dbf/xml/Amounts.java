@@ -3,9 +3,14 @@ package pl.itr.kamsoft2dbf.xml;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import pl.itr.kamsoft2dbf.doc.Vat;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import static java.util.function.Function.identity;
 
 @JacksonXmlRootElement(localName = "kwoty")
 public class Amounts {
@@ -42,6 +47,19 @@ public class Amounts {
                 getValue("kwd-brutto-zakupu"),
                 getValue("kwd-netto-zakupu"),
                 getValue("kwd-vat-zakupu")
+        );
+    }
+
+    protected Map<Vat, pl.itr.kamsoft2dbf.doc.Amount> getVatAmounts() {
+        return Vat.getVatRates().stream()
+                .collect(Collectors.toMap(identity(), this::getVatAmount));
+    }
+
+    private pl.itr.kamsoft2dbf.doc.Amount getVatAmount(Vat vat) {
+        return new pl.itr.kamsoft2dbf.doc.Amount(
+                getValue("kwd-brutto-transakcji-" + vat.getVat()),
+                getValue("kwd-netto-transakcji-" + vat.getVat()),
+                getValue("kwd-vat-transakcji-" + vat.getVat())
         );
     }
 

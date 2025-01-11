@@ -64,6 +64,36 @@
           <symbol>kwd-brutto-zakupu</symbol>
           <wartosc>20.33</wartosc>
         </kwota>
+        <kwota>
+          <symbol>kwd-brutto-transakcji-23</symbol>
+          <wartosc>11.11</wartosc>
+          <stawka-vat>23</stawka-vat>
+        </kwota>
+        <kwota>
+          <symbol>kwd-vat-transakcji-23</symbol>
+          <wartosc>2.08</wartosc>
+          <stawka-vat>23</stawka-vat>
+        </kwota>
+        <kwota>
+          <symbol>kwd-netto-transakcji-23</symbol>
+          <wartosc>9.03</wartosc>
+          <stawka-vat>23</stawka-vat>
+        </kwota>
+        <kwota>
+          <symbol>kwd-brutto-transakcji-8</symbol>
+          <wartosc>278.85</wartosc>
+          <stawka-vat>8</stawka-vat>
+        </kwota>
+        <kwota>
+          <symbol>kwd-vat-transakcji-8</symbol>
+          <wartosc>20.65</wartosc>
+          <stawka-vat>8</stawka-vat>
+        </kwota>
+        <kwota>
+          <symbol>kwd-netto-transakcji-8</symbol>
+          <wartosc>258.2</wartosc>
+          <stawka-vat>8</stawka-vat>
+        </kwota>
       </kwoty>
       <cechy>
         <cecha>
