@@ -116,7 +116,9 @@ public class Dbf {
                         VAT_8, new Amount(ZERO, row.getBigDecimal(P32.name()), row.getBigDecimal(P34.name()))
                 ),
                 row.getString(NZWK.name()),
-                row.getString(NIPK.name())
+                row.getString(NIPK.name()),
+                row.getString(NKNT.name()),
+                row.getString(OPIS.name())
                 );
     }
 }

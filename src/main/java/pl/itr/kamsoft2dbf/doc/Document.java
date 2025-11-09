@@ -19,6 +19,8 @@ public class Document {
     private final Map<Vat, Amount> vatAmounts;
     private String contractorName;
     private String vatId;
+    private String contractorInternalId;
+    private String remarks;
 
     public Document(
             String docNo,
@@ -34,7 +36,9 @@ public class Document {
             Amount purchaceAmount,
             Map<Vat, Amount> vatAmounts,
             String contractorName,
-            String vatId
+            String vatId,
+            String contractorInternalId,
+            String remarks
     ) {
         this.docNo = docNo;
         this.paymentDeadlineType = paymentDeadlineType;
@@ -50,6 +54,8 @@ public class Document {
         this.retailAmount = isPurchaseDocument(documentType) ? retailAmount : purchaceAmount;
         this.contractorName = contractorName;
         this.vatId = vatId;
+        this.contractorInternalId = contractorInternalId;
+        this.remarks = remarks;
     }
 
     public String getContractorName() {
@@ -58,6 +64,14 @@ public class Document {
 
     public String getVatId() {
         return vatId;
+    }
+
+    public String getContractorInternalId() {
+        return contractorInternalId;
+    }
+
+    public String getRemarks() {
+        return remarks;
     }
 
     public String getDocNo() {
@@ -115,6 +129,16 @@ public class Document {
 
     public Document setVatId(String vatId) {
         this.vatId = vatId;
+        return this;
+    }
+
+    public Document setContractorInternalId(String contractorInternalId) {
+        this.contractorInternalId = contractorInternalId;
+        return this;
+    }
+
+    public Document setRemarks(String remarks) {
+        this.remarks = remarks;
         return this;
     }
 

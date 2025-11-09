@@ -37,7 +37,8 @@ public class XmlDocument {
     private Optional<Document> toDocument(Card card) {
         return toDocument()
                 .map(document -> document.setContractorName(card.getFullName()))
-                .map(document -> document.setVatId(card.getVatId()));
+                .map(document -> document.setVatId(card.getVatId()))
+                .map(document -> document.setContractorInternalId(card.getInternalId()));
     }
 
     private Optional<Document> toDocument() {
@@ -58,7 +59,9 @@ public class XmlDocument {
                         getAmount(Amounts::getPurchaseAmount),
                         getVatAmounts(),
                         null,
-                        null
+                        null,
+                        null,
+                        header.getRemarks()
                 ));
     }
 
