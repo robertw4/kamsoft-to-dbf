@@ -16,16 +16,19 @@ public class Card {
     private final String name2;
     @JacksonXmlProperty(localName = "nip")
     private final String vatId;
+    @JacksonXmlProperty(localName = "wewn-ident")
+    private final String internalId;
 
-    public Card(Integer id, String name, String name2, String vatId) {
+    public Card(Integer id, String name, String name2, String vatId, String internalId) {
         this.id = id;
         this.name = name;
         this.name2 = name2;
         this.vatId = vatId;
+        this.internalId = internalId;
     }
 
     public Card() {
-        this(null, null, null, null);
+        this(null, null, null, null, null);
     }
 
     protected Integer getId() {
@@ -34,6 +37,10 @@ public class Card {
 
     protected String getVatId() {
         return vatId;
+    }
+
+    protected String getInternalId() {
+        return internalId;
     }
 
     protected String getFullName() {
@@ -50,6 +57,7 @@ public class Card {
                 ", name='" + name + '\'' +
                 ", name2='" + name2 + '\'' +
                 ", vatId='" + vatId + '\'' +
+                ", internalId='" + internalId + '\'' +
                 '}';
     }
 }
