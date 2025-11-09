@@ -10,6 +10,7 @@ import pl.itr.kamsoft2dbf.doc.Documents;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +42,35 @@ public class Dbf {
         }
         reader.close();
         return new Documents(documents);
+    }
+
+    public static List<DBFRow> readRows(String fileName) throws FileNotFoundException {
+        DBFReader reader = new DBFReader(new FileInputStream(fileName), Charset.forName(MAZOVIA_CHARSET_NAME));
+        DBFRow row;
+
+        List<DBFRow> rows = new ArrayList<>();
+        while ((row = reader.nextRow()) != null) {
+            rows.add(row);
+        }
+        reader.close();
+        return rows;
+    }
+
+    public static List<DBFRow> readRowsWhere(String fileName, String fieldName, Object value) throws FileNotFoundException {
+        DBFReader reader = new DBFReader(new FileInputStream(fileName), Charset.forName(MAZOVIA_CHARSET_NAME));
+        DBFRow row;
+
+        List<DBFRow> rows = new ArrayList<>();
+        while ((row = reader.nextRow()) != null) {
+            Object fieldValue = row.getObject(fieldName);
+            if (fieldValue != null && fieldValue.equals(value)) {
+                rows.add(row);
+            } else if (fieldValue == null && value == null) {
+                rows.add(row);
+            }
+        }
+        reader.close();
+        return rows;
     }
 
     private static Object[] toRecord(Document document) {
@@ -81,17 +111,17 @@ public class Dbf {
                 0.0,
                 0.0,
                 0.0,
-                document.getRetailAmount().map(Amount::getBrutto).orElse(null),
-                document.getRetailAmount().map(Amount::getNetto).orElse(null),
-                document.getRetailAmount().map(Amount::getVat).orElse(null),
+                document.getRetailAmount().map(Amount::getBrutto).orElse(ZERO),
+                document.getRetailAmount().map(Amount::getNetto).orElse(ZERO),
+                document.getRetailAmount().map(Amount::getVat).orElse(ZERO),
                 0.0,
-                document.getVatAmount(VAT_23).map(Amount::getNetto).orElse(null),
+                document.getVatAmount(VAT_23).map(Amount::getNetto).orElse(ZERO),
                 0.0,
-                document.getVatAmount(VAT_23).map(Amount::getVat).orElse(null),
+                document.getVatAmount(VAT_23).map(Amount::getVat).orElse(ZERO),
                 0.0,
-                document.getVatAmount(VAT_8).map(Amount::getNetto).orElse(null),
+                document.getVatAmount(VAT_8).map(Amount::getNetto).orElse(ZERO),
                 0.0,
-                document.getVatAmount(VAT_8).map(Amount::getVat).orElse(null),
+                document.getVatAmount(VAT_8).map(Amount::getVat).orElse(ZERO),
                 document.getContractorName(),
                 document.getVatId()
         };
