@@ -85,6 +85,15 @@ public class XmlDocument {
     }
 
     private Map<Vat, Amount> getVatAmounts() {
+        // Jeśli dokument jest członkiem grupy VAT, nie wykazujemy kwot VAT
+        boolean isVatGroupMember = Optional.ofNullable(header)
+                .map(Header::isVatGroupMember)
+                .orElse(false);
+
+        if (isVatGroupMember) {
+            return Map.of();
+        }
+
         return Optional.ofNullable(summary)
                 .map(Summary::getVatAmounts)
                 .orElse(Map.of());

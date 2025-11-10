@@ -30,6 +30,8 @@ public class Header {
     private final String internalId;
     @JacksonXmlProperty(localName = "uwagi")
     private final String remarks;
+    @JacksonXmlProperty(localName = "czlonek-grupy-vat")
+    private final Integer vatGroupMember;
 
     public Header(
             Integer contractor,
@@ -43,6 +45,22 @@ public class Header {
             String internalId,
             String remarks
     ) {
+        this(contractor, docNo, paymentDeadline, documentType, documentDate, recipientDate, saleDate, fiscal, internalId, remarks, null);
+    }
+
+    public Header(
+            Integer contractor,
+            String docNo,
+            PaymentDeadline paymentDeadline,
+            String documentType,
+            String documentDate,
+            String recipientDate,
+            String saleDate,
+            String fiscal,
+            String internalId,
+            String remarks,
+            Integer vatGroupMember
+    ) {
         this.contractor = contractor;
         this.docNo = docNo;
         this.paymentDeadline = paymentDeadline;
@@ -53,10 +71,11 @@ public class Header {
         this.fiscal = fiscal;
         this.internalId = internalId;
         this.remarks = remarks;
+        this.vatGroupMember = vatGroupMember;
     }
 
     public Header() {
-        this(null, null, null, null, null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null, null, null, null, null);
     }
 
     protected Integer getContractor() {
@@ -117,6 +136,10 @@ public class Header {
 
     protected String getRemarks() {
         return remarks;
+    }
+
+    protected boolean isVatGroupMember() {
+        return vatGroupMember != null && vatGroupMember == 1;
     }
 
     private Optional<Date> parse(String date) {

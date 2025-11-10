@@ -55,8 +55,8 @@ public class XMLToDBFTest {
             assertEquals(new BigDecimal("582.62"), doc1.getBigDecimal("P25"));
             assertEquals(new BigDecimal("46.61"), doc1.getBigDecimal("P26"));
             // VAT 8%
-            assertEquals(new BigDecimal("457.57"), doc1.getBigDecimal("P32"));
-            assertEquals(new BigDecimal("36.61"), doc1.getBigDecimal("P34"));
+            assertEquals(new BigDecimal("0.00"), doc1.getBigDecimal("P32"));
+            assertEquals(new BigDecimal("0.00"), doc1.getBigDecimal("P34"));
 
             // Test dokumentu 3 - NDOK='FV/440687/25/PZ'
             DBFRow doc3 = rows.get(2);
@@ -100,12 +100,12 @@ public class XMLToDBFTest {
             assertEquals(new BigDecimal("2027.87"), doc5.getBigDecimal("P11"));
             assertEquals(new BigDecimal("1875.57"), doc5.getBigDecimal("P12"));
             assertEquals(new BigDecimal("152.30"), doc5.getBigDecimal("P13"));
-            // VAT 23%
-            assertEquals(new BigDecimal("15.98"), doc5.getBigDecimal("P28"));
-            assertEquals(new BigDecimal("3.68"), doc5.getBigDecimal("P30"));
-            // VAT 8%
-            assertEquals(new BigDecimal("1854.74"), doc5.getBigDecimal("P32"));
-            assertEquals(new BigDecimal("148.38"), doc5.getBigDecimal("P34"));
+            // VAT 23% - dokument członka grupy VAT, więc VAT = 0.00
+            assertEquals(new BigDecimal("0.00"), doc5.getBigDecimal("P28"));
+            assertEquals(new BigDecimal("0.00"), doc5.getBigDecimal("P30"));
+            // VAT 8% - dokument członka grupy VAT, więc VAT = 0.00
+            assertEquals(new BigDecimal("0.00"), doc5.getBigDecimal("P32"));
+            assertEquals(new BigDecimal("0.00"), doc5.getBigDecimal("P34"));
 
             // Test dokumentu 7 - NDOK='FM/125731/25/PZ' (z VAT 23% i 8%)
             DBFRow doc7 = rows.get(6);
@@ -213,11 +213,11 @@ public class XMLToDBFTest {
 
                 // Porównaj wszystkie kluczowe pola
                 assertEquals(originalRow.getString("NDOK"), generatedRow.getString("NDOK"),
-                        "NDOK mismatch for OSID: " + ndok);
+                        "NDOK mismatch for NDOK: " + ndok);
                 assertEquals(originalRow.getString("NIPK"), generatedRow.getString("NIPK"),
-                        "NIPK mismatch for OSID: " + ndok);
+                        "NIPK mismatch for NDOK: " + ndok);
                 assertEquals(originalRow.getString("NZWK"), generatedRow.getString("NZWK"),
-                        "NZWK mismatch for OSID: " + ndok);
+                        "NZWK mismatch for NDOK: " + ndok);
 /*                assertEquals(
                         originalRow.getString("NDKR"),
                         generatedRow.getString("NDKR").substring(0, originalRow.getString("NDKR").length()),
@@ -226,55 +226,55 @@ public class XMLToDBFTest {
 
                 // Porównaj daty
                 assertEquals(dateToString(originalRow.getDate("DTA2")), dateToString(generatedRow.getDate("DTA2")),
-                        "DTA2 mismatch for OSID: " + ndok);
+                        "DTA2 mismatch for NDOK: " + ndok);
 
                 if (originalRow.getDate("DTA3") != null) {
                     assertEquals(dateToString(originalRow.getDate("DTA3")), dateToString(generatedRow.getDate("DTA3")),
-                            "DTA3 mismatch for OSID: " + ndok);
+                            "DTA3 mismatch for NDOK: " + ndok);
                 }
 
                 assertEquals(dateToString(originalRow.getDate("DTA4")), dateToString(generatedRow.getDate("DTA4")),
-                        "DTA4 mismatch for OSID: " + ndok);
+                        "DTA4 mismatch for NDOK: " + ndok);
 
                 // Porównaj kwoty - P11, P12, P13 (kwoty transakcyjne)
                 assertBigDecimalEquals(originalRow.getBigDecimal("P11"), generatedRow.getBigDecimal("P11"),
-                        "P11 mismatch for OSID: " + ndok);
+                        "P11 mismatch for NDOK: " + ndok);
                 assertBigDecimalEquals(originalRow.getBigDecimal("P12"), generatedRow.getBigDecimal("P12"),
-                        "P12 mismatch for OSID: " + ndok);
+                        "P12 mismatch for NDOK: " + ndok);
                 assertBigDecimalEquals(originalRow.getBigDecimal("P13"), generatedRow.getBigDecimal("P13"),
-                        "P13 mismatch for OSID: " + ndok);
+                        "P13 mismatch for NDOK: " + ndok);
 
                 // Porównaj P24, P25, P26 (kwoty księgowe)
                 assertBigDecimalEquals(originalRow.getBigDecimal("P24"), generatedRow.getBigDecimal("P24"),
-                        "P24 mismatch for OSID: " + ndok);
+                        "P24 mismatch for NDOK: " + ndok);
                 assertBigDecimalEquals(originalRow.getBigDecimal("P25"), generatedRow.getBigDecimal("P25"),
-                        "P25 mismatch for OSID: " + ndok);
+                        "P25 mismatch for NDOK: " + ndok);
                 assertBigDecimalEquals(originalRow.getBigDecimal("P26"), generatedRow.getBigDecimal("P26"),
-                        "P26 mismatch for OSID: " + ndok);
+                        "P26 mismatch for NDOK: " + ndok);
 
                 // Porównaj kwoty VAT 23% (P28, P30)
                 assertBigDecimalEquals(originalRow.getBigDecimal("P28"), generatedRow.getBigDecimal("P28"),
-                        "P28 (VAT 23% netto) mismatch for OSID: " + ndok);
+                        "P28 (VAT 23% netto) mismatch for NDOK: " + ndok);
                 assertBigDecimalEquals(originalRow.getBigDecimal("P30"), generatedRow.getBigDecimal("P30"),
-                        "P30 (VAT 23% podatek) mismatch for OSID: " + ndok);
+                        "P30 (VAT 23% podatek) mismatch for NDOK: " + ndok);
 
                 // Porównaj kwoty VAT 8% (P32, P34)
                 assertBigDecimalEquals(originalRow.getBigDecimal("P32"), generatedRow.getBigDecimal("P32"),
-                        "P32 (VAT 8% netto) mismatch for OSID: " + ndok);
+                        "P32 (VAT 8% netto) mismatch for NDOK: " + ndok);
                 assertBigDecimalEquals(originalRow.getBigDecimal("P34"), generatedRow.getBigDecimal("P34"),
-                        "P34 (VAT 8% podatek) mismatch for OSID: " + ndok);
+                        "P34 (VAT 8% podatek) mismatch for NDOK: " + ndok);
 
                 // Porównaj kwoty VAT 5% (P36, P38)
                 assertBigDecimalEquals(originalRow.getBigDecimal("P36"), generatedRow.getBigDecimal("P36"),
-                        "P36 (VAT 5% netto) mismatch for OSID: " + ndok);
+                        "P36 (VAT 5% netto) mismatch for NDOK: " + ndok);
                 assertBigDecimalEquals(originalRow.getBigDecimal("P38"), generatedRow.getBigDecimal("P38"),
-                        "P38 (VAT 5% podatek) mismatch for OSID: " + ndok);
+                        "P38 (VAT 5% podatek) mismatch for NDOK: " + ndok);
 
                 // Porównaj kwoty zwolnione/nie podlegające (P40, P42)
                 assertBigDecimalEquals(originalRow.getBigDecimal("P40"), generatedRow.getBigDecimal("P40"),
-                        "P40 (zwolnione) mismatch for OSID: " + ndok);
+                        "P40 (zwolnione) mismatch for NDOK: " + ndok);
                 assertBigDecimalEquals(originalRow.getBigDecimal("P42"), generatedRow.getBigDecimal("P42"),
-                        "P42 (nie podlegające) mismatch for OSID: " + ndok);
+                        "P42 (nie podlegające) mismatch for NDOK: " + ndok);
             }
 
             // Cleanup
