@@ -28,6 +28,12 @@ public class Header {
     private final String fiscal;
     @JacksonXmlProperty(localName = "wewn-ident")
     private final String internalId;
+    @JacksonXmlProperty(localName = "uwagi")
+    private final String remarks;
+    @JacksonXmlProperty(localName = "czlonek-grupy-vat")
+    private final Integer vatGroupMember;
+    @JacksonXmlProperty(localName = "czy-korekta")
+    private final Boolean correction;
 
     public Header(
             Integer contractor,
@@ -37,7 +43,42 @@ public class Header {
             String documentDate,
             String recipientDate,
             String saleDate,
-            String fiscal, String internalId
+            String fiscal,
+            String internalId,
+            String remarks
+    ) {
+    this(contractor, docNo, paymentDeadline, documentType, documentDate, recipientDate, saleDate, fiscal, internalId, remarks, null, null);
+    }
+
+    public Header(
+            Integer contractor,
+            String docNo,
+            PaymentDeadline paymentDeadline,
+            String documentType,
+            String documentDate,
+            String recipientDate,
+            String saleDate,
+            String fiscal,
+            String internalId,
+            String remarks,
+            Integer vatGroupMember
+    ) {
+        this(contractor, docNo, paymentDeadline, documentType, documentDate, recipientDate, saleDate, fiscal, internalId, remarks, vatGroupMember, null);
+    }
+
+    public Header(
+            Integer contractor,
+            String docNo,
+            PaymentDeadline paymentDeadline,
+            String documentType,
+            String documentDate,
+            String recipientDate,
+            String saleDate,
+            String fiscal,
+            String internalId,
+            String remarks,
+            Integer vatGroupMember,
+            Boolean correction
     ) {
         this.contractor = contractor;
         this.docNo = docNo;
@@ -48,10 +89,13 @@ public class Header {
         this.saleDate = saleDate;
         this.fiscal = fiscal;
         this.internalId = internalId;
+        this.remarks = remarks;
+        this.vatGroupMember = vatGroupMember;
+        this.correction = correction;
     }
 
     public Header() {
-        this(null, null, null, null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null, null, null, null, null, null);
     }
 
     protected Integer getContractor() {
@@ -60,8 +104,8 @@ public class Header {
 
     protected String getDocNo() {
         return switch (documentType) {
-            case "SBKB" -> "SBK " + dateToDocNo();
-            case "KRFF" -> "KRF " + dateToDocNo();
+            case "SBKF", "SBKB" -> "SBK " + dateToDocNo();
+            case "KRFF" -> "KRF  " + dateToDocNo();
             default -> docNo;
         };
     }
@@ -73,7 +117,7 @@ public class Header {
     protected String toDocumentType() {
         return switch (documentType) {
             case "FZ" -> "FZV";
-            case "SBKB" -> "SBK";
+            case "SBKF" -> "SBK";
             case "FS" -> "FSV";
             case "KFZ" -> "KZV";
             case "KRFF" -> "KRF";
@@ -108,6 +152,18 @@ public class Header {
 
     protected String getInternalId() {
         return internalId;
+    }
+
+    protected String getRemarks() {
+        return remarks;
+    }
+
+    protected boolean isVatGroupMember() {
+        return vatGroupMember != null && vatGroupMember == 1;
+    }
+
+    protected boolean isCorrection() {
+        return Boolean.TRUE.equals(correction);
     }
 
     private Optional<Date> parse(String date) {

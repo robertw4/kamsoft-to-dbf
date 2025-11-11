@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum Vat {
-    VAT_23("23"), VAT_8("8");
+    VAT_23("23"), VAT_8("8"), VAT_5("5");
 
     private final String vat;
     Vat(String vat) {
