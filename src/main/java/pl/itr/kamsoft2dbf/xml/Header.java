@@ -117,7 +117,7 @@ public class Header {
     protected String toDocumentType() {
         return switch (documentType) {
             case "FZ" -> "FZV";
-            case "SBKF", "SBKB" -> "SBK";
+            case "SBKF" -> "SBK";
             case "FS" -> "FSV";
             case "KFZ" -> "KZV";
             case "KRFF" -> "KRF";

@@ -44,7 +44,7 @@ class MainTest {
         // then
         try {
             var docs = Dbf.read(outputFile);
-            assert docs.getDocuments().size() == 7;
+            assert docs.getDocuments().size() == 6;
 
             var doc1 = docs.getDocuments().get(0);
             assertEquals("100001", doc1.getDocNo());

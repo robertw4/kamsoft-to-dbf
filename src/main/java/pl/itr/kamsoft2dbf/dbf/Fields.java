@@ -62,7 +62,7 @@ public enum Fields {
     P39(NUMERIC, 13, 2),
     P40(NUMERIC, 13, 2),
     P41(NUMERIC, 13, 2),
-    P42(NUMERIC, 13, 2),
+    P51(NUMERIC, 13, 2),
     NZWK(CHARACTER, 100),
     NIPK(CHARACTER, 15);
 
