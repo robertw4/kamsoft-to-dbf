@@ -39,6 +39,72 @@ public class Summary {
     protected Map<Vat, Amount> getVatAmounts() {
         return Optional.ofNullable(amounts)
                 .map(Amounts::getVatAmounts)
+                .orElse(Map.of());
+    }
+
+    protected Map<Vat, Amount> getRetailVatAmounts() {
+        return Optional.ofNullable(amounts)
+                .map(Amounts::getRetailVatAmounts)
+                .orElse(Map.of());
+    }
+
+    protected java.math.BigDecimal getPaymentAmount() {
+        return Optional.ofNullable(amounts)
+                .map(Amounts::getPaymentAmount)
+                .orElse(null);
+    }
+
+    protected java.math.BigDecimal getCzNet() {
+        return Optional.ofNullable(amounts)
+                .map(Amounts::getCzNet)
+                .orElse(null);
+    }
+
+    protected java.math.BigDecimal getCzRxNet() {
+        return Optional.ofNullable(amounts)
+                .map(Amounts::getCzRxNet)
+                .orElse(null);
+    }
+
+    protected java.math.BigDecimal getCzRxwNet() {
+        return Optional.ofNullable(amounts)
+                .map(Amounts::getCzRxwNet)
+                .orElse(null);
+    }
+
+    protected java.math.BigDecimal getCzOtcNet() {
+        return Optional.ofNullable(amounts)
+                .map(Amounts::getCzOtcNet)
+                .orElse(null);
+    }
+
+    protected java.math.BigDecimal getCzOtcwNet() {
+        return Optional.ofNullable(amounts)
+                .map(Amounts::getCzOtcwNet)
+                .orElse(null);
+    }
+
+    protected java.math.BigDecimal getRxNet() {
+        return Optional.ofNullable(amounts)
+                .map(Amounts::getRxNet)
+                .orElse(null);
+    }
+
+    protected java.math.BigDecimal getRxwNet() {
+        return Optional.ofNullable(amounts)
+                .map(Amounts::getRxwNet)
+                .orElse(null);
+    }
+
+    protected java.math.BigDecimal getOtcNet() {
+        return Optional.ofNullable(amounts)
+                .map(Amounts::getOtcNet)
+                .orElse(null);
+    }
+
+    protected java.math.BigDecimal getOtcwNet() {
+        return Optional.ofNullable(amounts)
+                .map(Amounts::getOtcwNet)
                 .orElse(null);
     }
 }

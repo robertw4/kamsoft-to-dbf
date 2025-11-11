@@ -6,6 +6,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import pl.itr.kamsoft2dbf.doc.Vat;
 
 import java.math.BigDecimal;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -55,12 +56,75 @@ public class Amounts {
                 .collect(Collectors.toMap(identity(), this::getVatAmount));
     }
 
+    protected Map<Vat, pl.itr.kamsoft2dbf.doc.Amount> getRetailVatAmounts() {
+        Map<Vat, pl.itr.kamsoft2dbf.doc.Amount> result = new EnumMap<>(Vat.class);
+        for (Vat vat : Vat.getVatRates()) {
+            pl.itr.kamsoft2dbf.doc.Amount amount = getRetailVatAmount(vat);
+            if (amount != null) {
+                result.put(vat, amount);
+            }
+        }
+        return result;
+    }
+
+    protected BigDecimal getPaymentAmount() {
+        return getValue("kwd-zaplata");
+    }
+
+    protected BigDecimal getCzNet() {
+        return getValue("kwd-netto-cz");
+    }
+
+    protected BigDecimal getCzRxNet() {
+        return getValue("kwd-netto-cz-rx");
+    }
+
+    protected BigDecimal getCzRxwNet() {
+        return getValue("kwd-netto-cz-rxw");
+    }
+
+    protected BigDecimal getCzOtcNet() {
+        return getValue("kwd-netto-cz-otc");
+    }
+
+    protected BigDecimal getCzOtcwNet() {
+        return getValue("kwd-netto-cz-otcw");
+    }
+
+    protected BigDecimal getRxNet() {
+        return getValue("kwd-netto-rx");
+    }
+
+    protected BigDecimal getRxwNet() {
+        return getValue("kwd-netto-rxw");
+    }
+
+    protected BigDecimal getOtcNet() {
+        return getValue("kwd-netto-otc");
+    }
+
+    protected BigDecimal getOtcwNet() {
+        return getValue("kwd-netto-otcw");
+    }
+
     private pl.itr.kamsoft2dbf.doc.Amount getVatAmount(Vat vat) {
         return new pl.itr.kamsoft2dbf.doc.Amount(
                 getValue("kwd-brutto-transakcji-" + vat.getVat()),
                 getValue("kwd-netto-transakcji-" + vat.getVat()),
                 getValue("kwd-vat-transakcji-" + vat.getVat())
         );
+    }
+
+    private pl.itr.kamsoft2dbf.doc.Amount getRetailVatAmount(Vat vat) {
+        var brutto = getValue("kwd-brutto-det-" + vat.getVat());
+        var netto = getValue("kwd-netto-det-" + vat.getVat());
+        var vatValue = getValue("kwd-vat-det-" + vat.getVat());
+
+        if (brutto == null && netto == null && vatValue == null) {
+            return null;
+        }
+
+        return new pl.itr.kamsoft2dbf.doc.Amount(brutto, netto, vatValue);
     }
 
     private BigDecimal getValue(String id) {

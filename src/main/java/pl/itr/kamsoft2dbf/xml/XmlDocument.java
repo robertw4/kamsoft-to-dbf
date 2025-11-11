@@ -6,6 +6,8 @@ import pl.itr.kamsoft2dbf.doc.Amount;
 import pl.itr.kamsoft2dbf.doc.Document;
 import pl.itr.kamsoft2dbf.doc.Vat;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
@@ -14,16 +16,19 @@ import java.util.function.Function;
 public class XmlDocument {
     @JacksonXmlProperty(localName = "naglowek")
     private final Header header;
+    @JacksonXmlProperty(localName = "naglowek-kor")
+    private final CorrectionHeader correctionHeader;
     @JacksonXmlProperty(localName = "podsumowanie-fk")
     private final Summary summary;
 
-    public XmlDocument(Header naglowek, Summary summary) {
+    public XmlDocument(Header naglowek, CorrectionHeader correctionHeader, Summary summary) {
         this.header = naglowek;
+        this.correctionHeader = correctionHeader;
         this.summary = summary;
     }
 
     public XmlDocument() {
-        this(null, null);
+        this(null, null, null);
     }
 
     protected Document toDocument(Map<Integer, Card> cardMap) {
@@ -50,7 +55,7 @@ public class XmlDocument {
                         header.toDocumentType(),
                         header.getDocumentDate(),
                         header.getFiscalDate(),
-                        header.getPaymentDate(),
+            resolvePaymentDate(),
                         header.getFiscal(),
                         getInternalDocNo(),
                         header.getInternalId(),
@@ -58,6 +63,17 @@ public class XmlDocument {
                         getAmount(Amounts::getRetailAmount),
                         getAmount(Amounts::getPurchaseAmount),
                         getVatAmounts(),
+                        getRetailVatAmounts(),
+                        getPaymentAmount(),
+            getCzNet(),
+            getCzRxNet(),
+            getCzRxwNet(),
+            getCzOtcNet(),
+            getCzOtcwNet(),
+            getRxNet(),
+            getRxwNet(),
+            getOtcNet(),
+            getOtcwNet(),
                         null,
                         null,
                         null,
@@ -85,18 +101,93 @@ public class XmlDocument {
     }
 
     private Map<Vat, Amount> getVatAmounts() {
-        // Jeśli dokument jest członkiem grupy VAT, nie wykazujemy kwot VAT
-        boolean isVatGroupMember = Optional.ofNullable(header)
-                .map(Header::isVatGroupMember)
-                .orElse(false);
-
-        if (isVatGroupMember) {
-            return Map.of();
-        }
-
         return Optional.ofNullable(summary)
                 .map(Summary::getVatAmounts)
                 .orElse(Map.of());
+    }
+
+    private Map<Vat, Amount> getRetailVatAmounts() {
+        return Optional.ofNullable(summary)
+                .map(Summary::getRetailVatAmounts)
+                .orElse(Map.of());
+    }
+
+    private BigDecimal getPaymentAmount() {
+        return Optional.ofNullable(summary)
+                .map(Summary::getPaymentAmount)
+                .orElse(null);
+    }
+
+    private BigDecimal getCzNet() {
+        return Optional.ofNullable(summary)
+                .map(Summary::getCzNet)
+                .orElse(null);
+    }
+
+    private BigDecimal getCzRxNet() {
+        return Optional.ofNullable(summary)
+                .map(Summary::getCzRxNet)
+                .orElse(null);
+    }
+
+    private BigDecimal getCzRxwNet() {
+        return Optional.ofNullable(summary)
+                .map(Summary::getCzRxwNet)
+                .orElse(null);
+    }
+
+    private BigDecimal getCzOtcNet() {
+        return Optional.ofNullable(summary)
+                .map(Summary::getCzOtcNet)
+                .orElse(null);
+    }
+
+    private BigDecimal getCzOtcwNet() {
+        return Optional.ofNullable(summary)
+                .map(Summary::getCzOtcwNet)
+                .orElse(null);
+    }
+
+    private BigDecimal getRxNet() {
+        return Optional.ofNullable(summary)
+                .map(Summary::getRxNet)
+                .orElse(null);
+    }
+
+    private BigDecimal getRxwNet() {
+        return Optional.ofNullable(summary)
+                .map(Summary::getRxwNet)
+                .orElse(null);
+    }
+
+    private BigDecimal getOtcNet() {
+        return Optional.ofNullable(summary)
+                .map(Summary::getOtcNet)
+                .orElse(null);
+    }
+
+    private BigDecimal getOtcwNet() {
+        return Optional.ofNullable(summary)
+                .map(Summary::getOtcwNet)
+                .orElse(null);
+    }
+
+    private Date resolvePaymentDate() {
+        Date paymentDate = Optional.ofNullable(header)
+                .map(Header::getPaymentDate)
+                .orElse(null);
+
+        if (Optional.ofNullable(header).map(Header::isCorrection).orElse(false)) {
+            Date correctionIssueDate = Optional.ofNullable(correctionHeader)
+                    .flatMap(CorrectionHeader::getIssueDate)
+                    .orElse(null);
+
+            if (correctionIssueDate != null) {
+                return correctionIssueDate;
+            }
+        }
+
+        return paymentDate;
     }
 
     @Override
